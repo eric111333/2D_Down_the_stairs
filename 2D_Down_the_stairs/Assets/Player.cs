@@ -23,10 +23,12 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftArrow))
         {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
             directionX = toleft;
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
             directionX = toright;
         }
         else
