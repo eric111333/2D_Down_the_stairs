@@ -80,6 +80,7 @@ public class GroundManager : MonoBehaviour
        // float newGroundPositionY = initPosotionY - spacingY * i;
         newGround.transform.position = new Vector3(NewGroundPositionX(), NewGroundPositionY(), 0);
         grounds.Add(newGround.transform);
+
     }
 
     float CountLowerGroundFloor()

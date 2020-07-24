@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public Button restartButton;
     public GameObject player;
+    private bool gameOver;
     void Start()
     {
         restartButton.gameObject.SetActive(false);
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (Player.isDead)
          {
            player.SetActive(false);
@@ -26,4 +28,5 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+   
 }
