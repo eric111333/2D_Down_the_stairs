@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
         
         if (Player.isDead)
          {
-           player.SetActive(false);
+           //player.SetActive(false);
            restartButton.gameObject.SetActive(true);
            restartButton1.gameObject.SetActive(true);
         }

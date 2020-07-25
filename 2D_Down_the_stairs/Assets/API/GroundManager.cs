@@ -91,7 +91,7 @@ public class GroundManager : MonoBehaviour
     }
     void DisplayCountFloor()
     {
-        displayCountFloor.text = "地下" + CountLowerGroundFloor().ToString("000") + "樓";
+        displayCountFloor.text = "第" + CountLowerGroundFloor().ToString("000") + "層";
     }
     void Update()
     {

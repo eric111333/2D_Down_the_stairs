@@ -135,7 +135,7 @@ public class Player : MonoBehaviour
     }
     public void Dead()
         {
-            //aniPlayer.SetTrigger("dead");
+            aniPlayer.SetTrigger("dead");
             this.enabled = false;
             isDead = true;
             //gm.GameOver();
