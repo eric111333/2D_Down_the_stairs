@@ -7,11 +7,18 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public Button restartButton;
+    public Button restartButton1;
     public GameObject player;
     private bool gameOver;
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene("選單");
+    }
     void Start()
     {
         restartButton.gameObject.SetActive(false);
+        restartButton1.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -22,6 +29,7 @@ public class GameManager : MonoBehaviour
          {
            player.SetActive(false);
            restartButton.gameObject.SetActive(true);
+           restartButton1.gameObject.SetActive(true);
         }
     }
     public void ReloadScene()

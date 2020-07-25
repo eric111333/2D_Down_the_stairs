@@ -2,31 +2,50 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Debug = UnityEngine.Debug;
 
 public class Player : MonoBehaviour
 {
-
     private Animator aniPlayer;
-    private SpriteRenderer sprPlayer; 
-    public float forceX;
+    private SpriteRenderer sprPlayer;
+    Rigidbody2D playerRigidbody2D;
+    [Header("目前的水平速度")]
+    public float speedX;
+    [Header("目前的水平方向")]
+    public float horizontalDirection;//數值會在 -1~1之間
+    const string HORIZONTAL = "Horizontal";
+    [Header("水平推力")]
+    [Range(0, 150)]
+    public float xForce;
+    //目前垂直速度
+    float speedY;
+    [Header("最大水平速度")]
+    public float maxSpeedX;
+    [Header("垂直向上推力")]
+    public float yForce;
+    [Header("感應地板的距離")]
+    [Range(0, 0.5f)]
+    public float distance;
+    [Header("偵測地板的射線起點")]
+    public Transform groundCheck;
+    [Header("地面圖層")]
+    public LayerMask groundLayer;
+    public bool grounded;
+
     public static bool isDead;
-    Rigidbody2D playerRigidBody2D;
-    readonly float toleft = -1;
-    readonly float toright = 1;
-    readonly float stop = 0;
     private float hp = 100;
     private float hpMax;
     private Image hpBar;
-    private bool dead;
-    private GameManager gm;
-    float directionX;
-    float directionY;
-    [Header("移動速度"), Range(0, 100)]
-    public float speed = 10;
-    [Header("垂直向上推力")]
-    Rigidbody2D playerRigidbody2D;
-    public float yForce;
+
+    public void ControlSpeed()
+    {
+        speedX = playerRigidbody2D.velocity.x;
+        speedY = playerRigidbody2D.velocity.y;
+        float newSpeedX = Mathf.Clamp(speedX, -maxSpeedX, maxSpeedX);
+        playerRigidbody2D.velocity = new Vector2(newSpeedX, speedY);
+
+
+    }
+
     public bool JumpKey
     {
         get
@@ -34,25 +53,17 @@ public class Player : MonoBehaviour
             return Input.GetKeyDown(KeyCode.Space);
         }
     }
+
     void TryJump()
     {
         if (IsGround && JumpKey)
         {
             playerRigidbody2D.AddForce(Vector2.up * yForce);
+            aniPlayer.SetTrigger("isjump");
         }
     }
-    [Header("感應地板的距離")]
-    [Range(0, 1f)]
-    public float distance;
 
-    [Header("偵測地板的射線起點")]
-    public Transform groundCheck;
-
-    [Header("地面圖層")]
-    public LayerMask groundLayer;
-
-    public bool grounded;
-
+    //在玩家的底部射一條很短的射線 如果射線有打到地板圖層的話 代表正在踩著地板
     bool IsGround
     {
         get
@@ -65,89 +76,53 @@ public class Player : MonoBehaviour
             return grounded;
         }
     }
-    public void Dead()
-    {
-        //aniPlayer.SetTrigger("dead");
-        this.enabled = false;
-        isDead = true;
-        //gm.GameOver();
 
-    }
     void Start()
     {
         isDead = false;
-        playerRigidBody2D = GetComponent<Rigidbody2D>();
+        playerRigidbody2D = GetComponent<Rigidbody2D>();
         sprPlayer = GetComponent<SpriteRenderer>();
         aniPlayer = GetComponent<Animator>();
         hpBar = GameObject.Find("血條").GetComponent<Image>();
-        gm = FindObjectOfType<GameManager>();
-
         hpMax = hp;
+
     }
 
-    private void Move()
+    /// <summary>水平移動</summary>
+    void MovementX()
     {
-        float h = Input.GetAxis("Horizontal");
+        horizontalDirection = Input.GetAxis(HORIZONTAL);
+        playerRigidbody2D.AddForce(new Vector2(xForce * horizontalDirection, 0));
+        aniPlayer.SetFloat("speed", Mathf.Abs(horizontalDirection));
 
-        transform.Translate(speed * h * Time.deltaTime, 0, 0);
-
-        aniPlayer.SetBool("run", h != 0);
-        ///    //AD左右鍵翻轉
-           if (Input.GetKeyDown(KeyCode.A))
-           {
-              sprPlayer.flipX = true;
-          }
-          if (Input.GetKeyDown(KeyCode.D))
-           {
-               sprPlayer.flipX = false;
-          }
-           if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-              sprPlayer.flipX = true;
-           }
-           if (Input.GetKeyDown(KeyCode.RightArrow))
-           {
-               sprPlayer.flipX = false;
-            }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            sprPlayer.flipX = true;
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            sprPlayer.flipX = false;
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            sprPlayer.flipX = true;
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            sprPlayer.flipX = false;
+        }
     }
 
     void Update()
     {
-
-        /*if (Input.GetKey(KeyCode.UpArrow))
-        {
-             directionY = toleft;
-        }
-        else
-        {
-            directionY = stop;
-        }
-
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-            directionX = toleft;
-            aniPlayer.SetTrigger("run");
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-            directionX = toright;
-            aniPlayer.SetTrigger("run");
-        }
-        else
-        {
-            directionX = stop;
-        }
-        Vector2 newDirection = new Vector2(directionX, directionY);
-        playerRigidBody2D.AddForce(newDirection * forceX);
-        */
-        Move();
+        MovementX();
+        ControlSpeed();
         TryJump();
+        //speedX = playerRigidbody2D.velocity.x;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (dead) return;
+        if (isDead) return;
 
         if (collision.tag == "陷阱")
         {
@@ -157,8 +132,13 @@ public class Player : MonoBehaviour
 
             if (hp <= 0) Dead();
         }
-
-        //Destroy(collision.gameObject);
     }
+    public void Dead()
+        {
+            //aniPlayer.SetTrigger("dead");
+            this.enabled = false;
+            isDead = true;
+            //gm.GameOver();
 
-}
+        }
+    }
