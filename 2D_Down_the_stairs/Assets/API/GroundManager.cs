@@ -21,6 +21,7 @@ public class GroundManager : MonoBehaviour
     public List<Transform> grounds;
     public Transform player;
     public Text displayCountFloor;
+    public GameObject[] Ground;
 
     void Start()
     {
@@ -76,7 +77,7 @@ public class GroundManager : MonoBehaviour
 
     void SpawnGround()
     {
-        GameObject newGround = Instantiate(Resources.Load<GameObject>("Ground"));
+        GameObject newGround = Instantiate(Ground[Random.Range(0,2)]);
        // float newGroundPositionY = initPosotionY - spacingY * i;
         newGround.transform.position = new Vector3(NewGroundPositionX(), NewGroundPositionY(), 0);
         grounds.Add(newGround.transform);

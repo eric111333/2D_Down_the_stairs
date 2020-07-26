@@ -243,7 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedX: 0
   horizontalDirection: 0
-  xForce: 10
+  xForce: 8
   maxSpeedX: 30
   yForce: 300
   distance: 0.21
@@ -490,6 +490,9 @@ MonoBehaviour:
   - {fileID: 0}
   player: {fileID: 52451753}
   displayCountFloor: {fileID: 1656494735}
+  Ground:
+  - {fileID: 8359050715102621449, guid: 9de23fa2747260743a8cce344c6063d0, type: 3}
+  - {fileID: 8845496594803183400, guid: a7d55360567a54c4a8fc0a303902f6ee, type: 3}
 --- !u!114 &143152133
 MonoBehaviour:
   m_ObjectHideFlags: 0

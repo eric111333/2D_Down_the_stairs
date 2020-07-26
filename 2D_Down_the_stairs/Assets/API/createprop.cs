@@ -28,7 +28,7 @@ public class createprop : MonoBehaviour
     /// </summary>
     private void createpropObject()
     {
-        y = Target.GetComponent<Transform>().position.y + 3;
+        y = Target.GetComponent<Transform>().position.y + Random.Range(1,5);
         float x =Random.Range(xMax, xMin);
         
         Vector3 pos = new Vector3(x, y, 0);
