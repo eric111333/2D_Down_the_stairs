@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - "\u9677\u9631"
   - "\u8840\u689D"
+  - "\u6575\u4EBA"
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - 
   - 
   - Ground
-  - 
+  - enemy
   - 
   - 
   - 

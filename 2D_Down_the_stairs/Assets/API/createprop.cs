@@ -20,6 +20,7 @@ public class createprop : MonoBehaviour
     public float timer_f = 0f;
     public int timer_i = 0;
     public float y;
+    public GameObject Target;
 
 
     /// <summary>
@@ -27,7 +28,7 @@ public class createprop : MonoBehaviour
     /// </summary>
     private void createpropObject()
     {
-        y = y - timer_i;
+        y = Target.GetComponent<Transform>().position.y + 3;
         float x =Random.Range(xMax, xMin);
         
         Vector3 pos = new Vector3(x, y, 0);

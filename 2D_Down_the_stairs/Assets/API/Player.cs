@@ -128,7 +128,15 @@ public class Player : MonoBehaviour
         {
             hp -= 20;
             hpBar.fillAmount = hp / hpMax;
-            //aniPlayer.SetTrigger("hurt");
+            aniPlayer.SetTrigger("hurt");
+
+            if (hp <= 0) Dead();
+        }
+        if (collision.tag == "敵人")
+        {
+            hp -= 30;
+            hpBar.fillAmount = hp / hpMax;
+            aniPlayer.SetTrigger("hurt");
 
             if (hp <= 0) Dead();
         }

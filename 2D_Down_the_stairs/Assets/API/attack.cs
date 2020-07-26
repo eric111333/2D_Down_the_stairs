@@ -2,16 +2,17 @@
 using System.Collections;
 public class attack : MonoBehaviour
 {
-    public GameObject target;
-    public float attackTimer;
-    public float coolDown;
+    
     private Animator aniPlayer;
+    public Transform attackpoint;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayers;
+    public int attackDamage = 40;
 
     // Use this for initialization
     void Start()
     {
-        attackTimer = 0;
-        coolDown = 2.0f;
+
         aniPlayer = GetComponent<Animator>();
     }
 
@@ -20,40 +21,26 @@ public class attack : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            aniPlayer.SetTrigger("attack");
+            Attack();
         }
-        if (attackTimer > 0)
-            attackTimer -= Time.deltaTime;
-
-        if (attackTimer < 0)
-            attackTimer = 0;
-
-        if (Input.GetKeyUp(KeyCode.F))
-        {
-            if (attackTimer == 0)
-            {
-                Attack();
-                attackTimer = coolDown;
-            }
-        }
-
+        
     }
 
     private void Attack()
     {
-        float distance = Vector3.Distance(target.transform.position, transform.position);
+        aniPlayer.SetTrigger("attack");
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackpoint.position, attackRange, enemyLayers);
 
-        Vector3 dir = (target.transform.position - transform.position).normalized;
-
-        float direction = Vector3.Dot(dir, transform.forward);
-
-        if (distance < 2.5f)
+        foreach(Collider2D enemy in hitEnemies)
         {
-            if (direction > 0)
-            {
-               /* EnemyHealth eh = (EnemyHealth)target.GetComponent("EnemyHealth");
-                eh.AddjustCurrentHealth(-10);*/
-            }
+            enemy.GetComponent<enemy>().TakeDamage(attackDamage);
         }
+
+    }
+    private void OnDrawGizmosSelected()
+    {
+        if (attackpoint == null)
+            return;
+        Gizmos.DrawWireSphere(attackpoint.position, attackRange);
     }
 }
