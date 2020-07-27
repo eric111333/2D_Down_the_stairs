@@ -32,7 +32,8 @@ public class Player : MonoBehaviour
     public bool grounded;
 
     public static bool isDead;
-    private float hp = 100;
+    [Header("血量")]
+    public float hp = 100;
     private float hpMax;
     private Image hpBar;
 
@@ -59,7 +60,7 @@ public class Player : MonoBehaviour
         if (IsGround && JumpKey)
         {
             playerRigidbody2D.AddForce(Vector2.up * yForce);
-            aniPlayer.SetTrigger("isjump");
+            aniPlayer.SetBool("jumping",true);
         }
     }
 
@@ -73,6 +74,7 @@ public class Player : MonoBehaviour
 
             Debug.DrawLine(start, end, Color.blue);
             grounded = Physics2D.Linecast(start, end, groundLayer);
+            aniPlayer.SetBool("jumping", false);
             return grounded;
         }
     }

@@ -31,23 +31,28 @@ public class GroundManager : MonoBehaviour
             SpawnGround();
         }
     }
-    public  void ControlSpawnGround()
+    public void ControlSpawnGround()
     {
         int groundsCountUnderPlayer = 0;
         foreach (Transform ground in grounds)
         {
-            if (ground.position.y < player.transform.position.y  )
+            if (ground)
             {
-                groundsCountUnderPlayer++ ;
+                if (ground.position.y < player.transform.position.y)
+                {
+                    groundsCountUnderPlayer++;
+                }
             }
         }
-        if (groundsCountUnderPlayer<MIN_GROUND_COUNT_UNDER_PLAYER)
+        print("g" + groundsCountUnderPlayer);
+        print("m" + MIN_GROUND_COUNT_UNDER_PLAYER);
+        if (groundsCountUnderPlayer < MIN_GROUND_COUNT_UNDER_PLAYER)
         {
             SpawnGround();
             ControlGroundsCount();
         }
     }
-    public  void ControlGroundsCount()
+    public void ControlGroundsCount()
     {
         if (grounds.Count > MAX_GROUND_COUNT)
         {
@@ -56,12 +61,13 @@ public class GroundManager : MonoBehaviour
         }
     }
     float NewGroundPositionX()
-    {   if (grounds.Count == 0)
+    {
+        if (grounds.Count == 0)
         {
             return 0;
         }
 
-        return Random.Range(leftBorder,rightBorder);
+        return Random.Range(leftBorder, rightBorder);
     }
 
     float NewGroundPositionY()
@@ -75,10 +81,17 @@ public class GroundManager : MonoBehaviour
 
     }
 
+
+
     void SpawnGround()
     {
-        GameObject newGround = Instantiate(Ground[Random.Range(0,2)]);
-       // float newGroundPositionY = initPosotionY - spacingY * i;
+        string[] test = new string[] { "Ground", "Ground0", "Cloud" };
+        int r = Random.Range(0, 3);
+
+        //GameObject newGround = Instantiate(Ground[Random.Range(0,2)]);
+        GameObject newGround = Instantiate(Resources.Load<GameObject>(test[r]));
+        //GameObject newGround = Instantiate(temp[r],this.transform.position, this.transform.rotation);
+        // float newGroundPositionY = initPosotionY - spacingY * i;
         newGround.transform.position = new Vector3(NewGroundPositionX(), NewGroundPositionY(), 0);
         grounds.Add(newGround.transform);
 
@@ -88,7 +101,7 @@ public class GroundManager : MonoBehaviour
     {
         float playerPositionY = player.transform.position.y;
         float deep = Mathf.Abs(initPosotionY - playerPositionY);
-        return (deep / singleFloorHeight)+1;
+        return (deep / singleFloorHeight) + 1;
     }
     void DisplayCountFloor()
     {
