@@ -14,7 +14,7 @@ public class GroundManager : MonoBehaviour
     readonly float rightBorder = 3;
     readonly float initPosotionY = 0;
     readonly int MAX_GROUND_COUNT = 10;
-    readonly int MIN_GROUND_COUNT_UNDER_PLAYER = 3;
+    readonly int MIN_GROUND_COUNT_UNDER_PLAYER = 5;
     static int groundNumber = -1;
     [Range(2, 6)] public float spacingY;
     [Range(1, 20)] public float singleFloorHeight;
@@ -44,8 +44,8 @@ public class GroundManager : MonoBehaviour
                 }
             }
         }
-        print("g" + groundsCountUnderPlayer);
-        print("m" + MIN_GROUND_COUNT_UNDER_PLAYER);
+        //print("g" + groundsCountUnderPlayer);
+        //print("m" + MIN_GROUND_COUNT_UNDER_PLAYER);
         if (groundsCountUnderPlayer < MIN_GROUND_COUNT_UNDER_PLAYER)
         {
             SpawnGround();

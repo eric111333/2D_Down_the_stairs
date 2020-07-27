@@ -142,6 +142,14 @@ public class Player : MonoBehaviour
 
             if (hp <= 0) Dead();
         }
+        if (collision.tag == "洞")
+        {
+            hp -= 20000;
+            hpBar.fillAmount = hp / hpMax;
+            aniPlayer.SetTrigger("hurt");
+
+            if (hp <= 0) Dead();
+        }
     }
     public void Dead()
         {

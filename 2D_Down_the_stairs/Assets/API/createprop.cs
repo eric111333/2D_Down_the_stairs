@@ -45,9 +45,9 @@ public class createprop : MonoBehaviour
     }
     void Update()
     {
-        timer_f += Time.deltaTime;
-        timer_i = (int)timer_f;
-        Debug.Log(timer_i);
+     //   timer_f += Time.deltaTime;
+     //   timer_i = (int)timer_f;
+     //   Debug.Log(timer_i);
         
         
     }
