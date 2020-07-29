@@ -28,15 +28,18 @@ public class MenuManager : MonoBehaviour
     public void Easy()
     {
         Player.hp = 10000;
+        Player.hpMax = 10000;
     }
 
     public void Mid()
     {
         Player.hp = 1000;
+        Player.hpMax = 1000;
     }
     public void Difficult()
     {
         Player.hp = 100;
+        Player.hpMax = 100;
     }
 
 }

@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
     public static bool isDead;
     [Header("血量")]
     public static float hp = 1000;
-    private float hpMax;
+    public static float hpMax;
     private Image hpBar;
 
     public void ControlSpeed()
@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
         sprPlayer = GetComponent<SpriteRenderer>();
         aniPlayer = GetComponent<Animator>();
         hpBar = GameObject.Find("血條").GetComponent<Image>();
-        hpMax = hp;
+        hp = hpMax;
 
     }
 
@@ -144,7 +144,7 @@ public class Player : MonoBehaviour
         }
         if (collision.tag == "洞")
         {
-            hp -= 20000;
+            hp -= 10000;
             hpBar.fillAmount = hp / hpMax;
             aniPlayer.SetTrigger("hurt");
 
