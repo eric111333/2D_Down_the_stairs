@@ -56,8 +56,15 @@ public class GroundManager : MonoBehaviour
     {
         if (grounds.Count > MAX_GROUND_COUNT)
         {
-            Destroy(grounds[0].gameObject);
-            grounds.RemoveAt(0);
+            if (grounds[0] != null)
+            {
+                Destroy(grounds[0].gameObject);
+                grounds.RemoveAt(0);
+            }
+            else
+            {
+                grounds.RemoveAt(0);
+            }
         }
     }
     float NewGroundPositionX()

@@ -18,5 +18,25 @@ public class MenuManager : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("SampleScene");
+        
     }
+    private void Start()
+    {
+        Screen.SetResolution(720, 1280, false);
+    }
+
+    public void Easy()
+    {
+        Player.hp = 10000;
+    }
+
+    public void Mid()
+    {
+        Player.hp = 1000;
+    }
+    public void Difficult()
+    {
+        Player.hp = 100;
+    }
+
 }

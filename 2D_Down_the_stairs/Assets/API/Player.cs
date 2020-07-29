@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
 
     public static bool isDead;
     [Header("血量")]
-    public float hp = 100;
+    public static float hp = 1000;
     private float hpMax;
     private Image hpBar;
 
