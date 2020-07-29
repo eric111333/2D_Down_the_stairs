@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
     public static bool isDead;
     [Header("血量")]
     public static float hp = 1000;
-    public static float hpMax;
+    public static float hpMax = 1000;
     private Image hpBar;
 
     public void ControlSpeed()
@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
         if (IsGround && JumpKey)
         {
             playerRigidbody2D.AddForce(Vector2.up * yForce);
-            aniPlayer.SetBool("jumping",true);
+            aniPlayer.SetBool("jumping", true);
         }
     }
 
@@ -152,11 +152,13 @@ public class Player : MonoBehaviour
         }
     }
     public void Dead()
-        {
-            aniPlayer.SetTrigger("dead");
-            this.enabled = false;
-            isDead = true;
-            //gm.GameOver();
+    {
+        aniPlayer.SetTrigger("dead");
+        this.enabled = false;
+        isDead = true;
+        //gm.GameOver();
+        print(1);
 
-        }
+
     }
+}
