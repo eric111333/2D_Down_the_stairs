@@ -22,7 +22,7 @@ public class MenuManager : MonoBehaviour
     }
     private void Start()
     {
-        Screen.SetResolution(720, 1280, false);
+        Screen.SetResolution(480, 854, false);
     }
 
     public void Easy()
