@@ -8,8 +8,8 @@ public class Player : MonoBehaviour
     private Animator aniPlayer;
     private SpriteRenderer sprPlayer;
     Rigidbody2D playerRigidbody2D;
-    [Header("目前的水平速度")]
-    public float speedX;
+    //[Header("目前的水平速度")]
+    //public float speedX;
     [Header("目前的水平方向")]
     public float horizontalDirection;//數值會在 -1~1之間
     const string HORIZONTAL = "Horizontal";
@@ -18,8 +18,8 @@ public class Player : MonoBehaviour
     public float xForce;
     //目前垂直速度
     float speedY;
-    [Header("最大水平速度")]
-    public float maxSpeedX;
+    //[Header("最大水平速度")]
+    //public float maxSpeedX;
     [Header("垂直向上推力")]
     public float yForce;
     [Header("感應地板的距離")]
@@ -30,14 +30,15 @@ public class Player : MonoBehaviour
     [Header("地面圖層")]
     public LayerMask groundLayer;
     public bool grounded;
-
-    public static bool isDead;
-    [Header("血量")]
-    public static float hp = 1000;
-    public static float hpMax = 1000;
+    public bool dead;
+    [Header("血量"), Range(0, 10000)]
+    public static float hp = 1200;
+    public static float hpMax = 1200;
     private Image hpBar;
+    [Header("結束畫面")]
+    public GameObject final;
 
-    public void ControlSpeed()
+    /*public void ControlSpeed()
     {
         speedX = playerRigidbody2D.velocity.x;
         speedY = playerRigidbody2D.velocity.y;
@@ -45,13 +46,13 @@ public class Player : MonoBehaviour
         playerRigidbody2D.velocity = new Vector2(newSpeedX, speedY);
 
 
-    }
+    }*/
 
     public bool JumpKey
     {
         get
         {
-            return Input.GetKeyDown(KeyCode.Space);
+            return Input.GetKeyDown(KeyCode.Space)|| Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W);
         }
     }
 
@@ -81,7 +82,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        isDead = false;
+        
         playerRigidbody2D = GetComponent<Rigidbody2D>();
         sprPlayer = GetComponent<SpriteRenderer>();
         aniPlayer = GetComponent<Animator>();
@@ -117,14 +118,15 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (dead) return;
         MovementX();
-        ControlSpeed();
+        //ControlSpeed();
         TryJump();
         //speedX = playerRigidbody2D.velocity.x;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isDead) return;
+        if (dead) return;
 
         if (collision.tag == "陷阱")
         {
@@ -153,12 +155,10 @@ public class Player : MonoBehaviour
     }
     public void Dead()
     {
-        aniPlayer.SetTrigger("dead");
-        this.enabled = false;
-        isDead = true;
+        aniPlayer.SetTrigger("die");
+        final.SetActive(true);
         //gm.GameOver();
-        print(1);
-
+        dead = true;
 
     }
 }
