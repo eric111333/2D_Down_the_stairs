@@ -4,11 +4,16 @@ ScriptsOnlyBuild:
     - Blink
     - CameraManager
     - Cloud
+    - CreateEnemy
+    - Enemy01
+    - FanRun
     - GameManager
     - Ground
     - GroundManager
     - MenuManager
+    - Platform
     - Player
+    - Spawner
     - attack
     - createprop
     - enemy
@@ -57,6 +62,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 50
       Script: {instanceID: 0}
+    - Class: 58
+      Script: {instanceID: 0}
     - Class: 61
       Script: {instanceID: 0}
     - Class: 62
@@ -84,35 +91,45 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11514}
     - Class: 114
-      Script: {instanceID: 11822}
+      Script: {instanceID: 11690}
     - Class: 114
-      Script: {instanceID: 12058}
+      Script: {instanceID: 11824}
     - Class: 114
-      Script: {instanceID: 12106}
+      Script: {instanceID: 11878}
     - Class: 114
-      Script: {instanceID: 12180}
+      Script: {instanceID: 12062}
     - Class: 114
-      Script: {instanceID: 12350}
+      Script: {instanceID: 12110}
     - Class: 114
-      Script: {instanceID: 12442}
+      Script: {instanceID: 12184}
     - Class: 114
-      Script: {instanceID: 12486}
+      Script: {instanceID: 12354}
     - Class: 114
-      Script: {instanceID: 12884}
+      Script: {instanceID: 12446}
     - Class: 114
-      Script: {instanceID: 13346}
+      Script: {instanceID: 12490}
     - Class: 114
-      Script: {instanceID: 13432}
+      Script: {instanceID: 12790}
     - Class: 114
-      Script: {instanceID: 13508}
+      Script: {instanceID: 12890}
     - Class: 114
-      Script: {instanceID: 13652}
+      Script: {instanceID: 13352}
     - Class: 114
-      Script: {instanceID: 13822}
+      Script: {instanceID: 13438}
     - Class: 114
-      Script: {instanceID: 13844}
+      Script: {instanceID: 13514}
     - Class: 114
-      Script: {instanceID: 14266}
+      Script: {instanceID: 13560}
+    - Class: 114
+      Script: {instanceID: 13660}
+    - Class: 114
+      Script: {instanceID: 13830}
+    - Class: 114
+      Script: {instanceID: 13852}
+    - Class: 114
+      Script: {instanceID: 14276}
+    - Class: 114
+      Script: {instanceID: 14298}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -130,6 +147,10 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 232
+      Script: {instanceID: 0}
+    - Class: 233
       Script: {instanceID: 0}
     "Assets/Scenes/\u9078\u55AE.unity":
     - Class: 1
@@ -146,6 +167,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 50
       Script: {instanceID: 0}
+    - Class: 58
+      Script: {instanceID: 0}
     - Class: 61
       Script: {instanceID: 0}
     - Class: 62
@@ -173,25 +196,31 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11514}
     - Class: 114
-      Script: {instanceID: 11822}
+      Script: {instanceID: 11690}
     - Class: 114
-      Script: {instanceID: 12058}
+      Script: {instanceID: 11824}
     - Class: 114
-      Script: {instanceID: 12180}
+      Script: {instanceID: 12062}
     - Class: 114
-      Script: {instanceID: 12884}
+      Script: {instanceID: 12184}
     - Class: 114
-      Script: {instanceID: 13268}
+      Script: {instanceID: 12890}
     - Class: 114
-      Script: {instanceID: 13432}
+      Script: {instanceID: 13274}
     - Class: 114
-      Script: {instanceID: 13652}
+      Script: {instanceID: 13438}
     - Class: 114
-      Script: {instanceID: 13822}
+      Script: {instanceID: 13560}
     - Class: 114
-      Script: {instanceID: 13844}
+      Script: {instanceID: 13660}
     - Class: 114
-      Script: {instanceID: 14266}
+      Script: {instanceID: 13830}
+    - Class: 114
+      Script: {instanceID: 13852}
+    - Class: 114
+      Script: {instanceID: 14276}
+    - Class: 114
+      Script: {instanceID: 14298}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -209,6 +238,10 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 232
+      Script: {instanceID: 0}
+    - Class: 233
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -333,6 +366,12 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
+      Hash: 6c946db76faf3bc0c645050c03c75c67
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Enemy01
+  - hash:
+      serializedVersion: 2
       Hash: 0dbc3be398b4869a5c8d0d8481ee402c
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -385,6 +424,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SubMeshUI
+  - hash:
+      serializedVersion: 2
+      Hash: 08f8c005bcb9ed3a61f3b787c7517e8c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Spawner
   - hash:
       serializedVersion: 2
       Hash: 63bdc2cf3273aa9bf650350f19d2af61
@@ -459,7 +504,7 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: 8ff3a4ecc46abbec052660c5c38327da
+      Hash: 7699970ed9c539221d7e03822f274373
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: attack
@@ -511,6 +556,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: RemoteTestResultSender
+  - hash:
+      serializedVersion: 2
+      Hash: da421a621fb33f4020f471ca3ad935cf
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CreateEnemy
   - hash:
       serializedVersion: 2
       Hash: 4fd8bf02e3089425d3502e26c44ba31a
@@ -603,7 +654,7 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: a085513226c4cee75121a50249689ec6
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -615,7 +666,7 @@ ScriptsOnlyBuild:
     className: Cloud
   - hash:
       serializedVersion: 2
-      Hash: e4699cfa888b450f03b9406c2518569a
+      Hash: c0ed38b60fb6b91e6d786b93b68c604d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -625,6 +676,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TextMeshProUGUI
+  - hash:
+      serializedVersion: 2
+      Hash: afc5b93a7b192de2dcb3832fe35a5c7e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Platform
   - hash:
       serializedVersion: 2
       Hash: f336e086360abe49a3323e5f1583c35a
@@ -667,6 +724,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_StyleSheet
+  - hash:
+      serializedVersion: 2
+      Hash: 5069fb13bede0a012fbbb645d5995f23
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LineRenderer
   - hash:
       serializedVersion: 2
       Hash: 21d73eda81c18eacd2c91ad5dfaf2e32
@@ -741,6 +804,12 @@ ScriptsOnlyBuild:
     className: Toggle
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FanRun
+  - hash:
+      serializedVersion: 2
       Hash: 8220b46879dc5e37db1b940c938f5744
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -767,4 +836,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - "Assets/Scenes/\u9078\u55AE.unity"
   - Assets/Scenes/SampleScene.unity
-  playerPath: E:/2D_down_01/2D_Down_the_stairs/Web
+  playerPath: D:/Unity/2D_Down_the_stairs/Web
