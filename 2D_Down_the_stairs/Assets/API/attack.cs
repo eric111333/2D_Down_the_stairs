@@ -26,7 +26,8 @@ public class attack : MonoBehaviour
         {
             Attack();
         }
-        
+        //attackpoint.position = sprPlayer.transform.position + sprPlayer.transform.up * 0.12f;
+
     }
 
     private void Attack()
@@ -48,6 +49,7 @@ public class attack : MonoBehaviour
     {
         //if (sprPlayer.flipX) attackpoint.position = new Vector3(0.12f, 0, 0);
         //if (sprPlayer.flipX == false) attackpoint.position = new Vector3(-0.12f, 0, 0);
+
         if (attackpoint == null)
             return;
         Gizmos.DrawWireSphere(attackpoint.position, attackRange);

@@ -7,9 +7,10 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {
     public float downSpeed;
+    private Transform tra;
     void Start()
     {
-        
+        tra = GetComponent<Transform>();
     }
 
     // Update is called once per frame

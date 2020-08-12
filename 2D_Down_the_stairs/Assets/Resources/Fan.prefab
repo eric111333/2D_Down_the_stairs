@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4367674207060725578}
   - component: {fileID: 4367674207060725581}
   - component: {fileID: 4367674207060725580}
+  - component: {fileID: 1065796533928408434}
   m_Layer: 8
   m_Name: Fan
   m_TagString: Fan
@@ -141,3 +142,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: becc576fc92b57c49b85ae019b29d236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1065796533928408434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4367674207060725583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 568ac5eb7171d4347ab37e9d26bb0f46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
