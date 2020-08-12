@@ -92,8 +92,8 @@ public class GroundManager : MonoBehaviour
 
     void SpawnGround()
     {
-        string[] test = new string[] { "Ground", "Ground0", "Cloud" };
-        int r = Random.Range(0, 3);
+        string[] test = new string[] { "Fan", "Ground", "Cloud" , "Brown"};
+        int r = Random.Range(0, 4);
 
         //GameObject newGround = Instantiate(Ground[Random.Range(0,2)]);
         GameObject newGround = Instantiate(Resources.Load<GameObject>(test[r]));

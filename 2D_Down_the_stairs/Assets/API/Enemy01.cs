@@ -29,25 +29,7 @@ public class Enemy01 : MonoBehaviour
         if (gameObject.transform.position.x >= 3|| gameObject.transform.position.x <= -3)
             ani.SetTrigger("attack");
     }
-    //aniPlayer.SetBool("run", h != 0);
-
-    ///    //AD左右鍵翻轉
-    ///    if (Input.GetKeyDown(KeyCode.A))
-    ///    {
-    //        sprPlayer.flipX = true;
-    //    }
-    //    if (Input.GetKeyDown(KeyCode.D))
-    //    {
-    //        sprPlayer.flipX = false;
-    //   }
-    //   if (Input.GetKeyDown(KeyCode.LeftArrow))
-    //    {
-    //       sprPlayer.flipX = true;
-    //    }
-    //    if (Input.GetKeyDown(KeyCode.RightArrow))
-    //    {
-    //        sprPlayer.flipX = false;
-    //    }
+  
     public void TakeDamage(int damage)
     {
         E01Health -= damage;

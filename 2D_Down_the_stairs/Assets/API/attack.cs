@@ -6,13 +6,15 @@ public class attack : MonoBehaviour
     private Animator aniPlayer;
     private SpriteRenderer sprPlayer;
     public Transform attackpoint;
+    private AudioSource aud;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
     public int attackDamage = 40;
-
+    public AudioClip soundAttack;
     // Use this for initialization
     void Start()
     {
+        aud = GetComponent<AudioSource>();
         sprPlayer = GetComponent<SpriteRenderer>();
         aniPlayer = GetComponent<Animator>();
     }
@@ -30,6 +32,7 @@ public class attack : MonoBehaviour
     private void Attack()
     {
         aniPlayer.SetTrigger("attack");
+        aud.PlayOneShot(soundAttack); 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackpoint.position, attackRange, enemyLayers);
 
 

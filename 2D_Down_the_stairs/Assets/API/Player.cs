@@ -8,28 +8,27 @@ public class Player : MonoBehaviour
     private Animator aniPlayer;
     private SpriteRenderer sprPlayer;
     Rigidbody2D playerRigidbody2D;
+    private AudioSource aud;
     //[Header("目前的水平速度")]
     //public float speedX;
-    [Header("目前的水平方向")]
-    public float horizontalDirection;//數值會在 -1~1之間
-    const string HORIZONTAL = "Horizontal";
+
     [Header("水平推力")]
     [Range(0, 150)]
-    public float xForce;
-    //目前垂直速度
-    float speedY;
+    public float speed;
     //[Header("最大水平速度")]
     //public float maxSpeedX;
     [Header("垂直向上推力")]
     public float yForce;
-    [Header("感應地板的距離")]
-    [Range(0, 0.5f)]
-    public float distance;
+
     [Header("偵測地板的射線起點")]
     public Transform groundCheck;
     [Header("地面圖層")]
     public LayerMask groundLayer;
-    public bool grounded;
+    public bool grounded,isjump;
+    bool jumpPressed;
+    int jumpCount;
+
+
     public bool dead;
     [Header("血量"), Range(0, 10000)]
     public static float hp = 1200;
@@ -37,6 +36,11 @@ public class Player : MonoBehaviour
     private Image hpBar;
     [Header("結束畫面")]
     public GameObject final;
+
+    public AudioClip soundHit;
+    
+    public AudioClip soundJump;
+    
 
     /*public void ControlSpeed()
     {
@@ -46,7 +50,7 @@ public class Player : MonoBehaviour
         playerRigidbody2D.velocity = new Vector2(newSpeedX, speedY);
 
 
-    }*/
+    }
 
     public bool JumpKey
     {
@@ -79,20 +83,21 @@ public class Player : MonoBehaviour
             return grounded;
         }
     }
-
+    */
     void Start()
     {
         
         playerRigidbody2D = GetComponent<Rigidbody2D>();
         sprPlayer = GetComponent<SpriteRenderer>();
         aniPlayer = GetComponent<Animator>();
+        aud = GetComponent<AudioSource>();
         hpBar = GameObject.Find("血條").GetComponent<Image>();
         hp = hpMax;
 
     }
 
     /// <summary>水平移動</summary>
-    void MovementX()
+   /* void MovementX()
     {
         horizontalDirection = Input.GetAxis(HORIZONTAL);
         playerRigidbody2D.AddForce(new Vector2(xForce * horizontalDirection, 0));
@@ -114,16 +119,82 @@ public class Player : MonoBehaviour
         {
             sprPlayer.flipX = false;
         }
-    }
+    }*/
 
     void Update()
     {
         if (dead) return;
-        MovementX();
+        if(Input.GetButtonDown("Jump") && jumpCount >0)
+        {
+            jumpPressed = true;
+        }
+
+        //MovementX();
         //ControlSpeed();
-        TryJump();
+        //TryJump();
         //speedX = playerRigidbody2D.velocity.x;
     }
+    private void FixedUpdate()
+    {
+        if (dead) return;
+        grounded = Physics2D.OverlapCircle(groundCheck.position, 0.05f, groundLayer);
+
+        GroundMove();
+        Jump();
+        SwitchAnim();
+    }
+
+    void GroundMove()
+    {
+        float horizontalMove = Input.GetAxisRaw("Horizontal");
+        playerRigidbody2D.velocity =
+           new Vector2(horizontalMove * speed, playerRigidbody2D.velocity.y);
+        if(horizontalMove !=0)
+        {
+            transform.localScale = new Vector3(horizontalMove*0.3f, 0.3f, 0.3f);
+        }
+    }
+    void Jump()
+    {
+        if(grounded)
+        {
+            jumpCount = 2;
+            isjump = false;
+        }
+        if(jumpPressed && grounded)
+        {
+            isjump = true;
+            playerRigidbody2D.velocity = new Vector2(playerRigidbody2D.velocity.x, yForce);
+            jumpCount--;
+            aud.PlayOneShot(soundJump, 05f);
+            jumpPressed = false;
+        }
+        else if (jumpPressed && jumpCount>0 &&isjump)
+        {
+            playerRigidbody2D.velocity = new Vector2(playerRigidbody2D.velocity.x, yForce);
+            jumpCount--;
+            jumpPressed = false;
+        }
+    }
+    void SwitchAnim()
+    {
+        aniPlayer.SetFloat("speed", Mathf.Abs(playerRigidbody2D.velocity.x));
+            if(grounded)
+        {
+            aniPlayer.SetBool("fall", false);
+        }
+            else if(!grounded&& playerRigidbody2D.velocity.y>0)
+        {
+            aniPlayer.SetBool("jumping", true);
+        }
+        else if (playerRigidbody2D.velocity.y < 0)
+        {
+            aniPlayer.SetBool("jumping", false);
+            aniPlayer.SetBool("fall", true);
+        }
+    }
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (dead) return;
@@ -131,6 +202,7 @@ public class Player : MonoBehaviour
         if (collision.tag == "陷阱")
         {
             hp -= 20;
+            aud.PlayOneShot(soundHit);
             hpBar.fillAmount = hp / hpMax;
             aniPlayer.SetTrigger("hurt");
 
@@ -139,6 +211,7 @@ public class Player : MonoBehaviour
         if (collision.tag == "敵人")
         {
             hp -= 30;
+            aud.PlayOneShot(soundHit);
             hpBar.fillAmount = hp / hpMax;
             aniPlayer.SetTrigger("hurt");
 
@@ -152,6 +225,16 @@ public class Player : MonoBehaviour
 
             if (hp <= 0) Dead();
         }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Fan"))
+        {
+            playerRigidbody2D.velocity = new Vector2(playerRigidbody2D.velocity.x, yForce+1.5f);
+        }
+
+
+
     }
     public void Dead()
     {
