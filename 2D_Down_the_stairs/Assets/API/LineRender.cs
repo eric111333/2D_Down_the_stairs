@@ -4,7 +4,7 @@ using System.Security.Principal;
 using UnityEngine;
 using System.Collections;
 
-public class LineRenderer : MonoBehaviour
+public class LineRender : MonoBehaviour
 {
     LineRenderer line;
     public Transform star;
@@ -17,8 +17,8 @@ public class LineRenderer : MonoBehaviour
 
     void Update()
     {
-        //line.SetPosition(0,star.position);
-        //line.SetPosition(1,end.position);
+        line.SetPosition(0,star.position);
+        line.SetPosition(1,end.position);
 
     }
 

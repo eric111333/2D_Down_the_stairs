@@ -7,6 +7,8 @@ public class attack : MonoBehaviour
     private SpriteRenderer sprPlayer;
     public Transform attackpoint;
     private AudioSource aud;
+    private float attackTime;
+    public float attackSpeed;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
     public int attackDamage = 40;
@@ -22,9 +24,12 @@ public class attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F)|| Input.GetKeyDown(KeyCode.J))
+        attackTime += Time.deltaTime;
+        //if (Input.GetKeyDown(KeyCode.F)|| Input.GetKeyDown(KeyCode.J))
+        if(attackTime>= attackSpeed)
         {
             Attack();
+            attackTime = 0;
         }
         //attackpoint.position = sprPlayer.transform.position + sprPlayer.transform.up * 0.12f;
 
@@ -41,7 +46,6 @@ public class attack : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<enemy>().TakeDamage(attackDamage);
-            enemy.GetComponent<Enemy01>().TakeDamage(attackDamage);
         }
 
     }

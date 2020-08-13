@@ -13,7 +13,7 @@ public class enemy : MonoBehaviour
         currentHealth = maxHealth;
         
     }
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         currentHealth -= damage;
         if(currentHealth<=0)

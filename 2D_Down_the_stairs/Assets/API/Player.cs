@@ -34,6 +34,9 @@ public class Player : MonoBehaviour
     public static float hp = 1200;
     public static float hpMax = 1200;
     private Image hpBar;
+    [Header("血顯示數字")]
+    public Text textHp;
+    public Text textHpmax;
     [Header("結束畫面")]
     public GameObject final;
 
@@ -138,7 +141,8 @@ public class Player : MonoBehaviour
     {
         if (dead) return;
         grounded = Physics2D.OverlapCircle(groundCheck.position, 0.05f, groundLayer);
-
+        textHp.text = ""+hp;
+        textHpmax.text = "/ " + hpMax;
         GroundMove();
         Jump();
         SwitchAnim();
