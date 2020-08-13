@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
-public class Enemy01 : enemy
+public class Enemy01 : MonoBehaviour
 {
     [Header("移動速度"), Range(0, 100)]
     public float speed = 10;
     private SpriteRenderer sprPlayer;
     private Animator ani;
-    
+    public int maxHealth = 80;
     int E01Health;
     private void Move()
     {
@@ -26,11 +26,11 @@ public class Enemy01 : enemy
     }
     private void attack()
     {
-        if (gameObject.transform.position.x >= 3 ) //|| gameObject.transform.position.x <= -3
+        if (gameObject.transform.position.x >= 3|| gameObject.transform.position.x <= -3)
             ani.SetTrigger("attack");
     }
   
-    public override void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         E01Health -= damage;
         ani.SetTrigger("hit");

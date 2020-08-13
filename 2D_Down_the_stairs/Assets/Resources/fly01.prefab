@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7641377017250506670}
   - component: {fileID: 6965206899885851403}
   - component: {fileID: -1010716591362695319}
+  - component: {fileID: -479043220396053584}
   m_Layer: 9
   m_Name: fly01
   m_TagString: "\u6575\u4EBA"
@@ -115,8 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841d73a2cd068e048a931d9c1b443dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 10.3
   maxHealth: 80
-  speed: 3
 --- !u!58 &-1010716591362695319
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -127,9 +128,22 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.019491544, y: 0}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.24853101
+  m_Radius: 0.32
+--- !u!114 &-479043220396053584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045927939753287191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 512a126383beaf9409c6468e7c6f762e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 40

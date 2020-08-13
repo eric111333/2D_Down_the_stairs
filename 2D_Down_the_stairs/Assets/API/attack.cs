@@ -41,7 +41,7 @@ public class attack : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<enemy>().TakeDamage(attackDamage);
-
+            enemy.GetComponent<Enemy01>().TakeDamage(attackDamage);
         }
 
     }
