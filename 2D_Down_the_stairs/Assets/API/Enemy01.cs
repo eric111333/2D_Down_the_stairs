@@ -35,12 +35,13 @@ public class Enemy01 : enemy
         ani.SetTrigger("hit");
         if (E01Health <= 0)
         {
+            ani.SetTrigger("die");
             Die();
         }
     }
     void Die()
     {
-        Destroy(this.gameObject);
+        Destroy(this.gameObject,0.5f);
     }
     void Start()
     {

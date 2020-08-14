@@ -155,7 +155,7 @@ public class Player : MonoBehaviour
            new Vector2(horizontalMove * speed, playerRigidbody2D.velocity.y);
         if(horizontalMove !=0)
         {
-            transform.localScale = new Vector3(horizontalMove*0.3f, 0.3f, 0.3f);
+            transform.localScale = new Vector3(horizontalMove*0.12f, 0.12f, 0.12f);
         }
     }
     void Jump()
@@ -177,6 +177,7 @@ public class Player : MonoBehaviour
         {
             playerRigidbody2D.velocity = new Vector2(playerRigidbody2D.velocity.x, yForce);
             jumpCount--;
+            aud.PlayOneShot(soundJump, 05f);
             jumpPressed = false;
         }
     }
@@ -185,7 +186,7 @@ public class Player : MonoBehaviour
         aniPlayer.SetFloat("speed", Mathf.Abs(playerRigidbody2D.velocity.x));
             if(grounded)
         {
-            aniPlayer.SetBool("fall", false);
+           // aniPlayer.SetBool("fall", false);
         }
             else if(!grounded&& playerRigidbody2D.velocity.y>0)
         {
@@ -194,7 +195,7 @@ public class Player : MonoBehaviour
         else if (playerRigidbody2D.velocity.y < 0)
         {
             aniPlayer.SetBool("jumping", false);
-            aniPlayer.SetBool("fall", true);
+            //aniPlayer.SetBool("fall", true);
         }
     }
 
