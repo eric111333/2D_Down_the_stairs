@@ -142,7 +142,7 @@ public class Player : MonoBehaviour
         if (dead) return;
         grounded = Physics2D.OverlapCircle(groundCheck.position, 0.05f, groundLayer);
         textHp.text = ""+hp;
-        textHpmax.text = "/ " + hpMax;
+        textHpmax.text = "/    " + hpMax;
         GroundMove();
         Jump();
         SwitchAnim();

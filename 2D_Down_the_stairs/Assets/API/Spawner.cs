@@ -10,7 +10,7 @@ public class Spawner : MonoBehaviour
     private float countTime;
     private Vector3 spawnPosition;
     public GameObject Ball;
-    private float BallCreate;
+    public float BallCreate;
 
     void Start()
     {

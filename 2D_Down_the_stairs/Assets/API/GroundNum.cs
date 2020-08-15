@@ -8,7 +8,7 @@ public class GroundNum : MonoBehaviour
     private void Update()
     {
         gameTime -= Time.deltaTime;
-        gametext.text = "BOSS出擊" + gameTime.ToString("000.0")+"秒";
+        gametext.text = "BOSS出擊" + gameTime.ToString("000")+"秒";
     }
     
     /*    public Text displayCountFloor;
