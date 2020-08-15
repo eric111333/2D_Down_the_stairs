@@ -37,6 +37,9 @@ public class Player : MonoBehaviour
     [Header("血顯示數字")]
     public Text textHp;
     public Text textHpmax;
+
+    public int goldNum;
+    public Text goldtext;
     [Header("結束畫面")]
     public GameObject final;
 
@@ -204,7 +207,7 @@ public class Player : MonoBehaviour
     {
         if (dead) return;
 
-        if (collision.tag == "陷阱")
+        if ( collision.tag == "陷阱")
         {
             hp -= 20;
             aud.PlayOneShot(soundHit);
@@ -212,6 +215,11 @@ public class Player : MonoBehaviour
             aniPlayer.SetTrigger("hurt");
 
             if (hp <= 0) Dead();
+        }
+        if (collision.tag == "Gold")
+        {
+            goldNum++;
+            goldtext.text = "" + goldNum;
         }
         if (collision.tag == "敵人")
         {
@@ -231,6 +239,7 @@ public class Player : MonoBehaviour
             if (hp <= 0) Dead();
         }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Fan"))

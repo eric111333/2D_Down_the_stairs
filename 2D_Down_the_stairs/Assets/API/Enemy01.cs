@@ -32,10 +32,12 @@ public class Enemy01 : enemy
     public override void TakeDamage(int damage)
     {
         E01Health -= damage;
+        Vector3 pos = new Vector3(transform.position.x + Random.Range(-0.1f, 0.1f), transform.position.y, 0);
         ani.SetTrigger("hit");
         if (E01Health <= 0)
         {
             ani.SetTrigger("die");
+            Instantiate(gold, pos, Quaternion.identity);
             Die();
         }
     }

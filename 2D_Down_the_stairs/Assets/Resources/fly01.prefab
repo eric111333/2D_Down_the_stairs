@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 40
+  gold: {fileID: 495968566394306483, guid: 458a7de686e827a4aa8ef4a98ea79b20, type: 3}
   speed: 0
 --- !u!58 &-1010716591362695319
 CircleCollider2D:
@@ -130,6 +131,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.014854647, y: 0}
+  m_Offset: {x: -0.025948241, y: 0}
   serializedVersion: 2
-  m_Radius: 0.21601748
+  m_Radius: 0.24929823
