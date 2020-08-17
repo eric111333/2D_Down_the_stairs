@@ -240,16 +240,18 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Fan"))
         {
-            playerRigidbody2D.velocity = new Vector2(playerRigidbody2D.velocity.x, yForce+1.5f);
-        }
-
-
+            playerRigidbody2D.velocity = new Vector2(playerRigidbody2D.velocity.x, yForce - 1f);
+        }        
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
 
     }
+   
     public void Dead()
     {
         aniPlayer.SetTrigger("die");
