@@ -14,7 +14,7 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
-        
+        BallCreate = Random.Range(10, 30);
     }
 
     public void SpawnPlatform()
@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour
         BallTime += Time.deltaTime;
         spawnPosition = transform.position;
         spawnPosition.x = Random.Range(-3.1f, 3.1f);
-        BallCreate = Random.Range(5, 20);
+        
 
         if(countTime>=spawnTime)
         {
@@ -33,6 +33,7 @@ public class Spawner : MonoBehaviour
         if (BallTime >= BallCreate)
         {
             Instantiate(Ball, spawnPosition, Quaternion.identity);
+            BallCreate = Random.Range(10, 30);
             BallTime = 0;
         }
     }
