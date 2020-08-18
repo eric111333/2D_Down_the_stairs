@@ -13,13 +13,14 @@ public class MouseController : MonoBehaviour
 
 	void Start ()
 	{
-	    targetPosition = transform.position;
-	    animator = GetComponent<Animator>();
+        //targetPosition = transform.position;
+        targetPosition = GameObject.FindWithTag("Player").transform.position;
+        animator = GetComponent<Animator>();
 	}
 	
 
 	void Update () {
-        if (Input.GetMouseButtonDown(0))
+        //if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -30,7 +31,7 @@ public class MouseController : MonoBehaviour
             }
         }
 
-        if(Input.GetMouseButtonDown(1))
+        //if(Input.GetMouseButtonDown(1))
         {
             if(Random.Range(0f, 1.0f) > 0.5f)
                 animator.SetTrigger("attack");

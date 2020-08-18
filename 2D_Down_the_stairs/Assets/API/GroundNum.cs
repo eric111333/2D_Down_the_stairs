@@ -14,7 +14,7 @@ public class GroundNum : MonoBehaviour
     {
 
         Vector3 poss = new Vector3(0, 0, 0);
-        if (bosskiller <= 0)
+        if (bosskiller <= 0&&bossNum>0)
         {
             bossNum--;
             endground.SetActive(true);
@@ -30,7 +30,7 @@ public class GroundNum : MonoBehaviour
     }
     private void Start()
     {
-        bosskiller = 20;
+        bosskiller = 2;
     }
 
     /*    public Text displayCountFloor;
