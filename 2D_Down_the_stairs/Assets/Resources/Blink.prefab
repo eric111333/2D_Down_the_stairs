@@ -184,6 +184,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 40
   gold: {fileID: 495968566394306483, guid: 458a7de686e827a4aa8ef4a98ea79b20, type: 3}
+  potion: {fileID: 7105842685992465507, guid: 987fe51beb3f4204c8078669659ac975, type: 3}
+  dropRate: 0
 --- !u!114 &-2787726650607474540
 MonoBehaviour:
   m_ObjectHideFlags: 0

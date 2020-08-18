@@ -9,11 +9,14 @@ public class enemy : MonoBehaviour
     int currentHealth;
     private Animator ani;
     public GameObject gold;//生錢
+    public GameObject potion;
+    public float dropRate;
 
     void Start()
     {
         currentHealth = maxHealth;
         ani = GetComponent<Animator>();
+        dropRate = Random.Range(0, 100);
 
     }
     public virtual void TakeDamage(int damage)
@@ -22,6 +25,10 @@ public class enemy : MonoBehaviour
         Vector3 pos = new Vector3(transform.position.x + Random.Range(-0.1f, 0.1f), transform.position.y, 0);
         if (currentHealth<=0)
         {
+            if(dropRate<=20)
+            {
+                Instantiate(potion, pos, Quaternion.identity);
+            }
             ani.SetTrigger("die");
             Instantiate(gold, pos, Quaternion.identity);
             Die();

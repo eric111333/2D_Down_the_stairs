@@ -134,7 +134,7 @@ public class Player : MonoBehaviour
         {
             jumpPressed = true;
         }
-
+        hpBar.fillAmount = hp / hpMax;
         //MovementX();
         //ControlSpeed();
         //TryJump();
@@ -220,6 +220,10 @@ public class Player : MonoBehaviour
         {
             goldNum++;
             goldtext.text = "" + goldNum;
+        }
+        if(collision.tag =="potion")
+        {
+            Potion.potionNum++;
         }
         if (collision.tag == "敵人")
         {

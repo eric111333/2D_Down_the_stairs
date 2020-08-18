@@ -186,7 +186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 773879519837040474}
   - component: {fileID: 598209375452800815}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: "\u98A8\u529B"
   m_TagString: Fan
   m_Icon: {fileID: 0}

@@ -36,6 +36,10 @@ public class Enemy01 : enemy
         ani.SetTrigger("hit");
         if (E01Health <= 0)
         {
+            if (dropRate <= 20)
+            {
+                Instantiate(potion, pos, Quaternion.identity);
+            }
             ani.SetTrigger("die");
             Instantiate(gold, pos, Quaternion.identity);
             Die();

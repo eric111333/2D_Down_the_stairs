@@ -12,6 +12,7 @@ TagManager:
   - "\u6D1E"
   - Fan
   - Gold
+  - potion
   layers:
   - Default
   - TransparentFX
