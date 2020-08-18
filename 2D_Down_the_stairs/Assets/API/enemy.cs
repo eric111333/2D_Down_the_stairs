@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class enemy : MonoBehaviour
 {
-    public int maxHealth = 40;
+    public int maxHealth = 120;
     int currentHealth;
     private Animator ani;
     public GameObject gold;//生錢
     public GameObject potion;
     public float dropRate;
+    public static int killer;
 
     void Start()
     {
@@ -25,10 +26,11 @@ public class enemy : MonoBehaviour
         Vector3 pos = new Vector3(transform.position.x + Random.Range(-0.1f, 0.1f), transform.position.y, 0);
         if (currentHealth<=0)
         {
-            if(dropRate<=20)
+            if(dropRate<=10)
             {
                 Instantiate(potion, pos, Quaternion.identity);
             }
+            GroundNum.bosskiller--;
             ani.SetTrigger("die");
             Instantiate(gold, pos, Quaternion.identity);
             Die();

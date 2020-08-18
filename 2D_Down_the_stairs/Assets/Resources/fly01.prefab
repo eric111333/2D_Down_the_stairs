@@ -115,11 +115,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841d73a2cd068e048a931d9c1b443dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 40
+  maxHealth: 10
   gold: {fileID: 495968566394306483, guid: 458a7de686e827a4aa8ef4a98ea79b20, type: 3}
   potion: {fileID: 7105842685992465507, guid: 987fe51beb3f4204c8078669659ac975, type: 3}
   dropRate: 0
-  speed: 0
+  speed: 1
+  E01Health: 10
 --- !u!58 &-1010716591362695319
 CircleCollider2D:
   m_ObjectHideFlags: 0

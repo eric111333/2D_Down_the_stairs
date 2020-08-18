@@ -4,10 +4,10 @@ using UnityEngine.SocialPlatforms;
 public class Enemy01 : enemy
 {
     [Header("移動速度"), Range(0, 100)]
-    public float speed = 10;
+    public float speed;
     private SpriteRenderer sprPlayer;
     private Animator ani;
-    int E01Health;
+    public int E01Health;
     private void Move()
     {
         float y = Mathf.Sin(Time.time) * Random.Range(-15, 15) * Time.deltaTime;
@@ -36,10 +36,11 @@ public class Enemy01 : enemy
         ani.SetTrigger("hit");
         if (E01Health <= 0)
         {
-            if (dropRate <= 20)
+            if (dropRate <= 10)
             {
                 Instantiate(potion, pos, Quaternion.identity);
             }
+            GroundNum.bosskiller--;
             ani.SetTrigger("die");
             Instantiate(gold, pos, Quaternion.identity);
             Die();
@@ -54,7 +55,7 @@ public class Enemy01 : enemy
         sprPlayer = GetComponent<SpriteRenderer>();
         ani = GetComponent<Animator>();
         Destroy(gameObject, 10);
-        E01Health = maxHealth;
+        E01Health = 10;
     }
 
     void Update()

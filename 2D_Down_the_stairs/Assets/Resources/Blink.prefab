@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 512a126383beaf9409c6468e7c6f762e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 40
+  maxHealth: 20
   gold: {fileID: 495968566394306483, guid: 458a7de686e827a4aa8ef4a98ea79b20, type: 3}
   potion: {fileID: 7105842685992465507, guid: 987fe51beb3f4204c8078669659ac975, type: 3}
   dropRate: 0

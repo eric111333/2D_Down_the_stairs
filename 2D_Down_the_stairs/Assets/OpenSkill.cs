@@ -15,6 +15,7 @@ public class OpenSkill : MonoBehaviour
         skillOpen = !skillOpen;
         skill.SetActive(skillOpen);
     }
+
     void Update()
     {
         

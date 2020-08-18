@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
     public Text textHp;
     public Text textHpmax;
 
-    public int goldNum;
+    public static int goldNum;
     public Text goldtext;
     [Header("結束畫面")]
     public GameObject final;
@@ -99,6 +99,7 @@ public class Player : MonoBehaviour
         aud = GetComponent<AudioSource>();
         hpBar = GameObject.Find("血條").GetComponent<Image>();
         hp = hpMax;
+        goldNum = 10000;
 
     }
 
@@ -209,7 +210,7 @@ public class Player : MonoBehaviour
 
         if ( collision.tag == "陷阱")
         {
-            hp -= 20;
+            hp -= 10;
             aud.PlayOneShot(soundHit);
             hpBar.fillAmount = hp / hpMax;
             aniPlayer.SetTrigger("hurt");
@@ -227,7 +228,7 @@ public class Player : MonoBehaviour
         }
         if (collision.tag == "敵人")
         {
-            hp -= 30;
+            hp -= 10;
             aud.PlayOneShot(soundHit);
             hpBar.fillAmount = hp / hpMax;
             aniPlayer.SetTrigger("hurt");
