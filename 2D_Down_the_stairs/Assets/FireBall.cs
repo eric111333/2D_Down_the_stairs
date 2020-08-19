@@ -10,7 +10,7 @@ public class FireBall : MonoBehaviour
     //  敵人移動速度
     public int moveSpeed = 10;
     //  敵人旋轉速度
-    public int rotationSpeed = 10;
+    public float rotationSpeed = 10;
     //  敵人和玩家之間的最大距離
     public int maxDistance;
     // ???  看下面解釋
@@ -29,8 +29,12 @@ public class FireBall : MonoBehaviour
         //  將它的transform指定給target
         //target = go.transform;
         maxDistance = 0;
-        Destroy(gameObject, 5);
+        Destroy(gameObject, 8);
 
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Destroy(gameObject);
     }
 
     void Update()
@@ -38,7 +42,8 @@ public class FireBall : MonoBehaviour
         //  在敵人和玩家之間畫一條線
         Debug.DrawLine(target, myTransform.position, Color.red);
         //  看著目標
-        myTransform.rotation = Quaternion.Slerp(myTransform.rotation, Quaternion.LookRotation(target - myTransform.position), rotationSpeed * Time.deltaTime);
+
+        myTransform.rotation = Quaternion.Slerp(myTransform.rotation, Quaternion.LookRotation(target - myTransform.position),Time.deltaTime*rotationSpeed);
         //  判斷敵人和玩家之間的距離是否大於最大距離
         if (Vector3.Distance(target, myTransform.position) > maxDistance)
         {

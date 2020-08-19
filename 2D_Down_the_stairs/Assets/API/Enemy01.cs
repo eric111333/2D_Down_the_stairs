@@ -23,7 +23,7 @@ public class Enemy01 : enemy
 
 
     }
-    private void attack()
+    private void attackent()
     {
         if (gameObject.transform.position.x >= 3)//|| gameObject.transform.position.x <= -3
             ani.SetTrigger("attack");
@@ -49,28 +49,32 @@ public class Enemy01 : enemy
         }
     }
     public override void OnTriggerEnter2D(Collider2D collision)//, int damage
+    
     {
-        /*base.OnTriggerEnter2D(collision, damage);
-        if (collision.tag=="fireball")
-        { 
-        E01Health -= damage*3;
-        Vector3 pos = new Vector3(transform.position.x + Random.Range(-0.1f, 0.1f), transform.position.y, 0);
-        ani.SetTrigger("hit");
-        GameObject points = Instantiate(hitPrint, transform.position, Quaternion.identity) as GameObject;
-        points.transform.GetChild(0).GetComponent<TextMesh>().text = "" + damage*3;
-        if (E01Health <= 0)
+        if (collision.tag == "fireball")
         {
-            if (dropRate <= 10)
+            //.SetTrigger("die");
+            //Die();
+
+            E01Health -= attack.attackDamage*2;
+            Vector3 pos = new Vector3(transform.position.x + Random.Range(-0.1f, 0.1f), transform.position.y, 0);
+            GameObject points = Instantiate(hitPrint, transform.position, Quaternion.identity) as GameObject;
+            points.transform.GetChild(0).GetComponent<TextMesh>().text = "" + attack.attackDamage * 2;
+            if (E01Health <= 0)
             {
-                Instantiate(potion, pos, Quaternion.identity);
+                if (dropRate <= 10)
+                {
+                    Instantiate(potion, pos, Quaternion.identity);
+                }
+                GroundNum.bosskiller--;
+                ani.SetTrigger("die");
+                Instantiate(gold, pos, Quaternion.identity);
+                Die();
+                return;
             }
-            GroundNum.bosskiller--;
-            ani.SetTrigger("die");
-            Instantiate(gold, pos, Quaternion.identity);
-            Die();
+            
         }
-        }
-        */
+        
     }
 
     void Die()
@@ -88,6 +92,6 @@ public class Enemy01 : enemy
     void Update()
     {
         Move();
-        attack();
+        attackent();
     }
 }

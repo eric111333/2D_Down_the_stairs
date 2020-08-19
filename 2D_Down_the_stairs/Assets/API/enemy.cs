@@ -38,17 +38,20 @@ public class enemy : MonoBehaviour
             ani.SetTrigger("die");
             Instantiate(gold, pos, Quaternion.identity);
             Die();
+            return;
         }
     }
-    public virtual void OnTriggerEnter2D(Collider2D collision )//,int damage
+    public virtual void OnTriggerEnter2D(Collider2D collision  )//
     {
         if (collision.tag == "fireball")
         {
-            Die();
-            /*currentHealth -= damage*2;
+            //.SetTrigger("die");
+            //Die();
+            
+            currentHealth -= attack.attackDamage*2;
             Vector3 pos = new Vector3(transform.position.x + Random.Range(-0.1f, 0.1f), transform.position.y, 0);
             GameObject points = Instantiate(hitPrint, transform.position, Quaternion.identity) as GameObject;
-            points.transform.GetChild(0).GetComponent<TextMesh>().text = "" + damage*3;
+            points.transform.GetChild(0).GetComponent<TextMesh>().text = "" + attack.attackDamage * 2;
             if (currentHealth <= 0)
             {
                 if (dropRate <= 10)
@@ -59,8 +62,9 @@ public class enemy : MonoBehaviour
                 ani.SetTrigger("die");
                 Instantiate(gold, pos, Quaternion.identity);
                 Die();
+                return;
             }
-            */
+            
         }
         
     }
