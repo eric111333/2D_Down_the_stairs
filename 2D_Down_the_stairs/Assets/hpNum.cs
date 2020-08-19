@@ -12,7 +12,7 @@ public class hpNum : enemy
     }
     public override void TakeDamage(int damage)
     {
-        Vector3 pos = new Vector3(transform.position.x, transform.position.y, 0);
+        //Vector3 pos = new Vector3(transform.position.x, transform.position.y, 0);
         transform.Translate(Vector3.up * Time.deltaTime * speed);
         hpText.text = "" + damage;
     }

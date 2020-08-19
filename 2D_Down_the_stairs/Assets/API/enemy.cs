@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class enemy : MonoBehaviour
 {
-    public int maxHealth = 120;
+    public int maxHealth = 20;
     int currentHealth;
     private Animator ani;
     public GameObject gold;//生錢
@@ -40,6 +40,31 @@ public class enemy : MonoBehaviour
             Die();
         }
     }
+    public virtual void OnTriggerEnter2D(Collider2D collision )//,int damage
+    {
+        if (collision.tag == "fireball")
+        {
+            Die();
+            /*currentHealth -= damage*2;
+            Vector3 pos = new Vector3(transform.position.x + Random.Range(-0.1f, 0.1f), transform.position.y, 0);
+            GameObject points = Instantiate(hitPrint, transform.position, Quaternion.identity) as GameObject;
+            points.transform.GetChild(0).GetComponent<TextMesh>().text = "" + damage*3;
+            if (currentHealth <= 0)
+            {
+                if (dropRate <= 10)
+                {
+                    Instantiate(potion, pos, Quaternion.identity);
+                }
+                GroundNum.bosskiller--;
+                ani.SetTrigger("die");
+                Instantiate(gold, pos, Quaternion.identity);
+                Die();
+            }
+            */
+        }
+        
+    }
+
     void Die()
     {
         Destroy(this.gameObject,0.5f);

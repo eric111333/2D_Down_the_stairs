@@ -13,6 +13,7 @@ TagManager:
   - Fan
   - Gold
   - potion
+  - fireball
   layers:
   - Default
   - TransparentFX
