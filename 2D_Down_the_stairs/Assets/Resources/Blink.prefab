@@ -185,6 +185,8 @@ MonoBehaviour:
   maxHealth: 20
   gold: {fileID: 495968566394306483, guid: 458a7de686e827a4aa8ef4a98ea79b20, type: 3}
   potion: {fileID: 7105842685992465507, guid: 987fe51beb3f4204c8078669659ac975, type: 3}
+  hitPrint: {fileID: 2123285144930618764, guid: c318807c2b71c7041bf9e291868f3e77,
+    type: 3}
   dropRate: 0
 --- !u!114 &-2787726650607474540
 MonoBehaviour:

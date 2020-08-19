@@ -10,9 +10,11 @@ public class enemy : MonoBehaviour
     private Animator ani;
     public GameObject gold;//生錢
     public GameObject potion;
+    public GameObject hitPrint;
     public float dropRate;
     public static int killer;
 
+    
     void Start()
     {
         currentHealth = maxHealth;
@@ -24,6 +26,8 @@ public class enemy : MonoBehaviour
     {
         currentHealth -= damage;
         Vector3 pos = new Vector3(transform.position.x + Random.Range(-0.1f, 0.1f), transform.position.y, 0);
+        GameObject points = Instantiate(hitPrint, transform.position, Quaternion.identity)as GameObject ;
+        points.transform.GetChild(0).GetComponent<TextMesh>().text = "" + damage;
         if (currentHealth<=0)
         {
             if(dropRate<=10)

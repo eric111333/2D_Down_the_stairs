@@ -34,6 +34,8 @@ public class Enemy01 : enemy
         E01Health -= damage;
         Vector3 pos = new Vector3(transform.position.x + Random.Range(-0.1f, 0.1f), transform.position.y, 0);
         ani.SetTrigger("hit");
+        GameObject points = Instantiate(hitPrint, transform.position, Quaternion.identity) as GameObject;
+        points.transform.GetChild(0).GetComponent<TextMesh>().text = "" + damage;
         if (E01Health <= 0)
         {
             if (dropRate <= 10)

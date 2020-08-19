@@ -9,6 +9,7 @@ public class OpenSkill : MonoBehaviour
     {
         
     }
+  
 
     private void OnMouseDown()
     {

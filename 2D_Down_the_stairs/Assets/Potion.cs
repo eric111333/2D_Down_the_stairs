@@ -13,7 +13,7 @@ public class Potion : MonoBehaviour
 
     private void OnMouseDown()
     {
-        print(1);
+
         if (potionNum > 0 && Player.hp <=Player.hpMax-20)
         {
             potionNum--;
