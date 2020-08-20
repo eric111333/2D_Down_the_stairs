@@ -30,7 +30,7 @@ public class GroundNum : MonoBehaviour
     }
     private void Start()
     {
-        bosskiller = 30;
+        bosskiller = 1;
     }
 
     /*    public Text displayCountFloor;

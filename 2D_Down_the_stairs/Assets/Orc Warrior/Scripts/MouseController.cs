@@ -20,8 +20,7 @@ public class MouseController : MonoBehaviour
 	
 
 	void Update () {
-        //if (Input.GetMouseButtonDown(0))
-        {
+        /*//if (Input.GetMouseButtonDown(0))
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 8888, ground))
@@ -29,16 +28,15 @@ public class MouseController : MonoBehaviour
                 targetPosition = hit.point + new Vector3(0,0,-2);
                 //targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
             }
-        }
+        
 
-        //if(Input.GetMouseButtonDown(1))
-        {
+        //if(Input.GetMouseButtonDown(1))    
             if(Random.Range(0f, 1.0f) > 0.5f)
                 animator.SetTrigger("attack");
             else
                 animator.SetTrigger("special");
-        }
-
+        
+        */
        if (targetPosition.x > transform.position.x && !lookRight)
           Flip();
         if(targetPosition.x < transform.position.x && lookRight)

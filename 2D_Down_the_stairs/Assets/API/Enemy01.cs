@@ -48,34 +48,41 @@ public class Enemy01 : enemy
             Die();
         }
     }
-    public override void OnTriggerEnter2D(Collider2D collision)//, int damage
-    
+    public override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "fireball")
+       if (collision.tag == "fireball")
+        { 
+            Debug.Log("123");
+       E01Health -= attack.attackDamage*2;
+       Vector3 pos = new Vector3(transform.position.x + Random.Range(-0.1f, 0.1f), transform.position.y, 0);
+       GameObject points = Instantiate(hitPrint, transform.position, Quaternion.identity) as GameObject;
+       points.transform.GetChild(0).GetComponent<TextMesh>().text = "" + attack.attackDamage * 2;
+        if (E01Health <= 0)
+        {
+            if (dropRate <= 10)
+            {
+                Instantiate(potion, pos, Quaternion.identity);
+            }
+            GroundNum.bosskiller--;
+            ani.SetTrigger("die");
+            Instantiate(gold, pos, Quaternion.identity);
+            Die();
+            return;
+        }
+        }
+        /*
         {
             //.SetTrigger("die");
             //Die();
-
-            E01Health -= attack.attackDamage*2;
-            Vector3 pos = new Vector3(transform.position.x + Random.Range(-0.1f, 0.1f), transform.position.y, 0);
-            GameObject points = Instantiate(hitPrint, transform.position, Quaternion.identity) as GameObject;
-            points.transform.GetChild(0).GetComponent<TextMesh>().text = "" + attack.attackDamage * 2;
-            if (E01Health <= 0)
-            {
-                if (dropRate <= 10)
-                {
-                    Instantiate(potion, pos, Quaternion.identity);
-                }
-                GroundNum.bosskiller--;
-                ani.SetTrigger("die");
-                Instantiate(gold, pos, Quaternion.identity);
-                Die();
-                return;
+            
+            
             }
             
-        }
         
+      */  
     }
+
+  
 
     void Die()
     {

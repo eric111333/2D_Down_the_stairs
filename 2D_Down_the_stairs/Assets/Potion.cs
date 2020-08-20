@@ -9,36 +9,59 @@ public class Potion : MonoBehaviour
     public static int atkDamageNum;
     public GameObject Fireball;
     public GameObject target;
+    public GameObject printitem;
+    public Text goldNum;
     public Image fire;
     private float firetime;
     private float fireCDtime=2;
+    Vector3 t0 = new Vector3(0, 0, 0);
+
 
     void Start()
     {
         potionNum = 3;
         atkDamageNum = 10;
+
     }
     public void skill()
     {
-        if (fire.fillAmount >= 1)
+
+        if (fire.fillAmount >= 1&&Player.mp>=2)
         { 
-        float x = target.GetComponent<Transform>().position.x +1;
+        float x = target.GetComponent<Transform>().position.x+1.5f;
         float y = target.GetComponent<Transform>().position.y;
         Vector3 pos = new Vector3(x, y, 0);
         Instantiate(Fireball, pos, Quaternion.identity);
         fire.fillAmount = 0;
+        Player.mp-=2;
         }   
+        if(Player.mp<=1)
+            {
+            GameObject points = Instantiate(printitem, t0, Quaternion.identity) as GameObject;
+            points.transform.GetChild(0).GetComponent<TextMesh>().text = "魔力不足";
+        }
+
     }
 
     public void PulsDamage()
-    { 
-     if (Player.goldNum >= 100)
+    {
+        
+        if (Player.goldNum >= atkDamageNum * 10)
         {
             atkDamageNum++;
             attack.attackDamage++;
-            Player.goldNum -= 100;
+            Player.goldNum -= atkDamageNum*10;
+            goldNum.text = "" + atkDamageNum * 10;
             atkDamage.text = "" + atkDamageNum;
+            GameObject points = Instantiate(printitem, t0, Quaternion.identity) as GameObject;
+            points.transform.GetChild(0).GetComponent<TextMesh>().text = "攻擊力=" + atkDamageNum ;
         }
+     if (Player.goldNum <= atkDamageNum * 10)
+        {
+        GameObject points = Instantiate(printitem, t0, Quaternion.identity) as GameObject;
+        points.transform.GetChild(0).GetComponent<TextMesh>().text = "金錢不足";
+        }
+            
     }
     public void pot()
     {

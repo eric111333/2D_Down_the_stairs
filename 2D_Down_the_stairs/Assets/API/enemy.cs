@@ -41,9 +41,10 @@ public class enemy : MonoBehaviour
             return;
         }
     }
-    public virtual void OnTriggerEnter2D(Collider2D collision  )//
+
+    public virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "fireball")
+       if (collision.tag == "fireball")
         {
             //.SetTrigger("die");
             //Die();
@@ -65,8 +66,7 @@ public class enemy : MonoBehaviour
                 return;
             }
             
-        }
-        
+        }  
     }
 
     void Die()

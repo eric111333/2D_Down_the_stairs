@@ -42,8 +42,9 @@ public class FireBall : MonoBehaviour
         //  在敵人和玩家之間畫一條線
         Debug.DrawLine(target, myTransform.position, Color.red);
         //  看著目標
-
-        myTransform.rotation = Quaternion.Slerp(myTransform.rotation, Quaternion.LookRotation(target - myTransform.position),Time.deltaTime*rotationSpeed);
+        //float eul = target.z -myTransform.position.z;
+        //myTransform.rotation = Quaternion.Euler(0f, 0f, eul);
+        myTransform.rotation =Quaternion.Slerp(myTransform.rotation, Quaternion.LookRotation(target - myTransform.position),Time.deltaTime*rotationSpeed);
         //  判斷敵人和玩家之間的距離是否大於最大距離
         if (Vector3.Distance(target, myTransform.position) > maxDistance)
         {

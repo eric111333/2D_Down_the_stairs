@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     public Transform groundCheck;
     [Header("地面圖層")]
     public LayerMask groundLayer;
-    public bool grounded,isjump;
+    public bool grounded, isjump;
     bool jumpPressed;
     int jumpCount;
 
@@ -37,16 +37,19 @@ public class Player : MonoBehaviour
     [Header("血顯示數字")]
     public Text textHp;
     public Text textHpmax;
+    public static float mp = 10;
+    public static float mpMax = 10;
+    private Image mpBar;
+    private float mpTime;
+    private float mpCd=5;
 
     public static int goldNum;
     public Text goldtext;
     [Header("結束畫面")]
     public GameObject final;
-
     public AudioClip soundHit;
-    
     public AudioClip soundJump;
-    
+
 
     /*public void ControlSpeed()
     {
@@ -92,14 +95,15 @@ public class Player : MonoBehaviour
     */
     void Start()
     {
-        
+
         playerRigidbody2D = GetComponent<Rigidbody2D>();
         sprPlayer = GetComponent<SpriteRenderer>();
         aniPlayer = GetComponent<Animator>();
         aud = GetComponent<AudioSource>();
         hpBar = GameObject.Find("血條").GetComponent<Image>();
+        mpBar = GameObject.Find("魔力條").GetComponent<Image>();
         hp = hpMax;
-        goldNum = 10000;
+        goldNum = 1000;
 
     }
 
@@ -131,11 +135,21 @@ public class Player : MonoBehaviour
     void Update()
     {
         if (dead) return;
-        if(Input.GetButtonDown("Jump") && jumpCount >0)
+        if (Input.GetButtonDown("Jump") && jumpCount > 0)
         {
             jumpPressed = true;
         }
         hpBar.fillAmount = hp / hpMax;
+        goldtext.text = "" + goldNum;
+        mpBar.fillAmount = mp / mpMax;
+
+        if (mp < mpMax)
+        {
+
+            mpTime += Time.deltaTime;
+            if (mpTime >= mpCd) { mp++; mpTime = 0; }        
+        }
+
         //MovementX();
         //ControlSpeed();
         //TryJump();
@@ -145,7 +159,7 @@ public class Player : MonoBehaviour
     {
         if (dead) return;
         grounded = Physics2D.OverlapCircle(groundCheck.position, 0.05f, groundLayer);
-        textHp.text = ""+hp;
+        textHp.text = "" + hp;
         textHpmax.text = "/    " + hpMax;
         GroundMove();
         Jump();
@@ -157,19 +171,19 @@ public class Player : MonoBehaviour
         float horizontalMove = Input.GetAxisRaw("Horizontal");
         playerRigidbody2D.velocity =
            new Vector2(horizontalMove * speed, playerRigidbody2D.velocity.y);
-        if(horizontalMove !=0)
+        if (horizontalMove != 0)
         {
-            transform.localScale = new Vector3(horizontalMove*0.12f, 0.12f, 0.12f);
+            transform.localScale = new Vector3(horizontalMove * 0.12f, 0.12f, 0.12f);
         }
     }
     void Jump()
     {
-        if(grounded)
+        if (grounded)
         {
             jumpCount = 2;
             isjump = false;
         }
-        if(jumpPressed && grounded)
+        if (jumpPressed && grounded)
         {
             isjump = true;
             playerRigidbody2D.velocity = new Vector2(playerRigidbody2D.velocity.x, yForce);
@@ -177,7 +191,7 @@ public class Player : MonoBehaviour
             aud.PlayOneShot(soundJump, 05f);
             jumpPressed = false;
         }
-        else if (jumpPressed && jumpCount>0 &&isjump)
+        else if (jumpPressed && jumpCount > 0 && isjump)
         {
             playerRigidbody2D.velocity = new Vector2(playerRigidbody2D.velocity.x, yForce);
             jumpCount--;
@@ -188,11 +202,11 @@ public class Player : MonoBehaviour
     void SwitchAnim()
     {
         aniPlayer.SetFloat("speed", Mathf.Abs(playerRigidbody2D.velocity.x));
-            if(grounded)
+        if (grounded)
         {
-           // aniPlayer.SetBool("fall", false);
+            // aniPlayer.SetBool("fall", false);
         }
-            else if(!grounded&& playerRigidbody2D.velocity.y>0)
+        else if (!grounded && playerRigidbody2D.velocity.y > 0)
         {
             aniPlayer.SetBool("jumping", true);
         }
@@ -208,7 +222,7 @@ public class Player : MonoBehaviour
     {
         if (dead) return;
 
-        if ( collision.tag == "陷阱")
+        if (collision.tag == "陷阱")
         {
             hp -= 10;
             aud.PlayOneShot(soundHit);
@@ -220,9 +234,9 @@ public class Player : MonoBehaviour
         if (collision.tag == "Gold")
         {
             goldNum++;
-            goldtext.text = "" + goldNum;
+
         }
-        if(collision.tag =="potion")
+        if (collision.tag == "potion")
         {
             Potion.potionNum++;
         }
@@ -250,13 +264,13 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Fan"))
         {
             playerRigidbody2D.velocity = new Vector2(playerRigidbody2D.velocity.x, yForce - 1f);
-        }        
+        }
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
 
     }
-   
+
     public void Dead()
     {
         aniPlayer.SetTrigger("die");

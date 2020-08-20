@@ -425,6 +425,9 @@ MonoBehaviour:
   Fireball: {fileID: 7978041228336592810, guid: 179bd3caabe957c4ab9cfb90d5fb78df,
     type: 3}
   target: {fileID: 1674212420}
+  printitem: {fileID: 2123285144930618764, guid: ded7d9528fd5fab41b80eb5288482e7b,
+    type: 3}
+  goldNum: {fileID: 1936941620}
   fire: {fileID: 1563376713}
 --- !u!1 &144000358
 GameObject:
@@ -594,8 +597,8 @@ GameObject:
   - component: {fileID: 187130487}
   - component: {fileID: 187130486}
   m_Layer: 5
-  m_Name: "MP\u689D"
-  m_TagString: "\u8840\u689D"
+  m_Name: "\u9B54\u529B\u689D"
+  m_TagString: "\u9B54\u529B\u689D"
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1727,7 +1730,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619180928}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6cf7b282393d7a4582160dfa775cc3d, type: 3}
   m_Name: 
@@ -1750,7 +1753,7 @@ GameObject:
   - component: {fileID: 647147771}
   m_Layer: 5
   m_Name: "MP\u689D0"
-  m_TagString: "\u8840\u689D"
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2525,8 +2528,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 686db58b8cc3d1740aadb46f24d94f52, type: 2}
-  - {fileID: 2100000, guid: 686db58b8cc3d1740aadb46f24d94f52, type: 2}
+  - {fileID: 2100000, guid: 589d90f2b83175d4ba6e129e78017f3f, type: 2}
+  - {fileID: 2100000, guid: 589d90f2b83175d4ba6e129e78017f3f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2549,8 +2552,8 @@ ParticleSystemRenderer:
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
-  m_MinParticleSize: 0
-  m_MaxParticleSize: 0.5
+  m_MinParticleSize: 0.1
+  m_MaxParticleSize: 10
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
@@ -2822,7 +2825,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.8
+      scalar: 0.36
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -10329,7 +10332,7 @@ GameObject:
   - component: {fileID: 1947088292}
   m_Layer: 5
   m_Name: "\u8840\u689D0"
-  m_TagString: "\u8840\u689D"
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11297,6 +11300,8 @@ MonoBehaviour:
   atkDamage: {fileID: 0}
   Fireball: {fileID: 0}
   target: {fileID: 0}
+  printitem: {fileID: 0}
+  goldNum: {fileID: 0}
   fire: {fileID: 0}
 --- !u!114 &2139779804
 MonoBehaviour:
