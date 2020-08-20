@@ -13,7 +13,7 @@ public class GroundNum : MonoBehaviour
     void Boss()
     {
 
-        Vector3 poss = new Vector3(0, 0, 0);
+        Vector3 poss = new Vector3(0, -3, 0);
         if (bosskiller <= 0&&bossNum>0)
         {
             bossNum--;
