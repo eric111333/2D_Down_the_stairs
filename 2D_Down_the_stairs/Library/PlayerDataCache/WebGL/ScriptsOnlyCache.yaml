@@ -97,6 +97,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.ScrollRect
     - UnityEngine.UI.Scrollbar
     - UnityEngine.UI.Shadow
+    - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
     - UnityEngine.UI.Toggle
     - UnityEngine.UI.VerticalLayoutGroup
@@ -220,6 +221,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 16040}
     - Class: 114
       Script: {instanceID: 16066}
+    - Class: 114
+      Script: {instanceID: 16106}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -1186,7 +1189,7 @@ ScriptsOnlyBuild:
     className: RenderObjects
   - hash:
       serializedVersion: 2
-      Hash: 89bbfb50be52d3a408f48721a105012b
+      Hash: 6d0dd5847e290b908ebbb481776bc459
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: OpenSkill
