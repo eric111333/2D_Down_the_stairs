@@ -11,6 +11,7 @@ public class Record : MonoBehaviour
         PlayerPrefs.SetInt("potionNum", Potion.potionNum);
         PlayerPrefs.SetFloat("attackSpeed", attack.attackSpeed);
         PlayerPrefs.SetInt("attackDamage", attack.attackDamage);
+        //PlayerPrefs.SetFloat("volume", AudioSource);
 
     }
     public void nextscene()
