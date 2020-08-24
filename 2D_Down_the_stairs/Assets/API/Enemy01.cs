@@ -28,7 +28,7 @@ public class Enemy01 : enemy
         if (gameObject.transform.position.x >= 3)//|| gameObject.transform.position.x <= -3
             ani.SetTrigger("attack");
     }
-  
+
     public override void TakeDamage(int damage)
     {
         E01Health -= damage;
@@ -50,43 +50,34 @@ public class Enemy01 : enemy
     }
     public override void OnTriggerEnter2D(Collider2D collision)
     {
-       if (collision.tag == "fireball")
-        { 
+        if (collision.tag == "fireball")
+        {
             Debug.Log("123");
-       E01Health -= attack.attackDamage*2;
-       Vector3 pos = new Vector3(transform.position.x + Random.Range(-0.1f, 0.1f), transform.position.y, 0);
-       GameObject points = Instantiate(hitPrint, transform.position, Quaternion.identity) as GameObject;
-       points.transform.GetChild(0).GetComponent<TextMesh>().text = "" + attack.attackDamage * 2;
-        if (E01Health <= 0)
-        {
-            if (dropRate <= 10)
+            E01Health -= attack.attackDamage * 2;
+            Vector3 pos = new Vector3(transform.position.x + Random.Range(-0.1f, 0.1f), transform.position.y, 0);
+            GameObject points = Instantiate(hitPrint, transform.position, Quaternion.identity) as GameObject;
+            points.transform.GetChild(0).GetComponent<TextMesh>().text = "" + attack.attackDamage * 2;
+            if (E01Health <= 0)
             {
-                Instantiate(potion, pos, Quaternion.identity);
+                if (dropRate <= 10)
+                {
+                    Instantiate(potion, pos, Quaternion.identity);
+                }
+                GroundNum.bosskiller--;
+                ani.SetTrigger("die");
+                Instantiate(gold, pos, Quaternion.identity);
+                Die();
+                return;
             }
-            GroundNum.bosskiller--;
-            ani.SetTrigger("die");
-            Instantiate(gold, pos, Quaternion.identity);
-            Die();
-            return;
         }
-        }
-        /*
-        {
-            //.SetTrigger("die");
-            //Die();
-            
-            
-            }
-            
-        
-      */  
+
     }
 
-  
+
 
     void Die()
     {
-        Destroy(this.gameObject,0.5f);
+        Destroy(this.gameObject, 0.5f);
     }
     void Start()
     {
@@ -94,6 +85,7 @@ public class Enemy01 : enemy
         ani = GetComponent<Animator>();
         Destroy(gameObject, 10);
         E01Health = 10;
+        dropRate = Random.Range(0, 100);
     }
 
     void Update()

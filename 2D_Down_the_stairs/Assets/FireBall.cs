@@ -16,6 +16,7 @@ public class FireBall : MonoBehaviour
     // ???  看下面解釋
     private Transform myTransform;
     // ???
+    Rigidbody2D rb;
     void Awake()
     {
         myTransform = transform;
@@ -23,6 +24,7 @@ public class FireBall : MonoBehaviour
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         //  通過標籤去查詢遊戲物件
         //GameObject go = GameObject.FindGameObjectWithTag("敵人");
         target = GameObject.FindWithTag("敵人").transform.position;
@@ -42,9 +44,19 @@ public class FireBall : MonoBehaviour
         //  在敵人和玩家之間畫一條線
         Debug.DrawLine(target, myTransform.position, Color.red);
         //  看著目標
-        //float eul = target.z -myTransform.position.z;
-        //myTransform.rotation = Quaternion.Euler(0f, 0f, eul);
-        myTransform.rotation =Quaternion.Slerp(myTransform.rotation, Quaternion.LookRotation(target - myTransform.position),Time.deltaTime*rotationSpeed);
+        float eul = target.z -myTransform.position.z;
+        myTransform.rotation = Quaternion.Euler(0f, 0f, eul);
+        if (transform.position.x < target.x|| transform.position.y < target.y)
+        {
+            rb.velocity = new Vector2(moveSpeed, moveSpeed);
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else
+        {
+            rb.velocity = new Vector2(-moveSpeed, moveSpeed);
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        //myTransform.rotation =Quaternion.Slerp(myTransform.rotation, Quaternion.LookRotation(target - myTransform.position),Time.deltaTime*rotationSpeed);
         //  判斷敵人和玩家之間的距離是否大於最大距離
         if (Vector3.Distance(target, myTransform.position) > maxDistance)
         {

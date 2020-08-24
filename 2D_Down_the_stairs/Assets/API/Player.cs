@@ -50,6 +50,8 @@ public class Player : MonoBehaviour
     public AudioClip soundHit;
     public AudioClip soundJump;
 
+    public static bool front;
+
 
     /*public void ControlSpeed()
     {
@@ -175,6 +177,8 @@ public class Player : MonoBehaviour
         {
             transform.localScale = new Vector3(horizontalMove * 0.12f, 0.12f, 0.12f);
         }
+        if (horizontalMove > 0) front = true;
+        if (horizontalMove < 0) front = false;
     }
     void Jump()
     {

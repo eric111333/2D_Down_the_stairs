@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public List<GameObject> platforms = new List<GameObject>();
-    public float spawnTime;
+    public static float spawnTime=1.2f;
     private float BallTime;
     private float countTime;
     private Vector3 spawnPosition;

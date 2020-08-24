@@ -29,10 +29,15 @@ public class Potion : MonoBehaviour
         if (fire.fillAmount >= 1&&Player.mp>=2)
         { 
         float x = target.GetComponent<Transform>().position.x+1.5f;
+        float x1 = target.GetComponent<Transform>().position.x - 1.5f;
         float y = target.GetComponent<Transform>().position.y;
         Vector3 pos = new Vector3(x, y, 0);
+        Vector3 pos1 = new Vector3(x1, y, 0);
+            if (Player.front==true)
         Instantiate(Fireball, pos, Quaternion.identity);
-        fire.fillAmount = 0;
+            if(Player.front==false)
+        Instantiate(Fireball, pos1, Quaternion.identity);
+            fire.fillAmount = 0;
         Player.mp-=2;
         }   
         if(Player.mp<=1)
