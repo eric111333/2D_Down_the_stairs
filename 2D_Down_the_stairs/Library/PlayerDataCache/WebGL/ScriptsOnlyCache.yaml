@@ -6,6 +6,7 @@ ScriptsOnlyBuild:
     - CameraManager
     - Cloud
     - CreateEnemy
+    - EndGround
     - Enemy00
     - Enemy01
     - FanRun
@@ -22,13 +23,14 @@ ScriptsOnlyBuild:
     - Potion
     - Record
     - Spawner
+    - VariableJoystick
     - attack
     - background
     - createprop
     - enemy
     - gold
     - iceball
-    - level
+    - iceballskill
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:
@@ -37,6 +39,8 @@ ScriptsOnlyBuild:
     - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.TileDragAndDropManager
+    Unity.RenderPipelines.Core.Editor.dll:
+    - UnityEditor.Rendering.DebugWindow
     Unity.RenderPipelines.Core.Runtime.dll:
     - UnityEngine.Rendering.UI.DebugUIHandlerBitField
     - UnityEngine.Rendering.UI.DebugUIHandlerButton
@@ -76,8 +80,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -190,39 +196,43 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13592}
     - Class: 114
-      Script: {instanceID: 13740}
-    - Class: 114
       Script: {instanceID: 13786}
     - Class: 114
       Script: {instanceID: 13924}
     - Class: 114
       Script: {instanceID: 13926}
     - Class: 114
-      Script: {instanceID: 14580}
+      Script: {instanceID: 14290}
     - Class: 114
-      Script: {instanceID: 14712}
+      Script: {instanceID: 14448}
     - Class: 114
-      Script: {instanceID: 14792}
+      Script: {instanceID: 14584}
     - Class: 114
-      Script: {instanceID: 14832}
+      Script: {instanceID: 14716}
     - Class: 114
-      Script: {instanceID: 14910}
+      Script: {instanceID: 14796}
     - Class: 114
-      Script: {instanceID: 15290}
+      Script: {instanceID: 14836}
     - Class: 114
-      Script: {instanceID: 15316}
+      Script: {instanceID: 14914}
     - Class: 114
-      Script: {instanceID: 15348}
+      Script: {instanceID: 15294}
     - Class: 114
-      Script: {instanceID: 15554}
+      Script: {instanceID: 15320}
     - Class: 114
-      Script: {instanceID: 15760}
+      Script: {instanceID: 15352}
     - Class: 114
-      Script: {instanceID: 16040}
+      Script: {instanceID: 15558}
     - Class: 114
-      Script: {instanceID: 16066}
+      Script: {instanceID: 15764}
     - Class: 114
-      Script: {instanceID: 16106}
+      Script: {instanceID: 16044}
+    - Class: 114
+      Script: {instanceID: 16070}
+    - Class: 114
+      Script: {instanceID: 16110}
+    - Class: 114
+      Script: {instanceID: 30908}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -359,57 +369,61 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13960}
     - Class: 114
-      Script: {instanceID: 14318}
+      Script: {instanceID: 14290}
     - Class: 114
-      Script: {instanceID: 14404}
+      Script: {instanceID: 14320}
     - Class: 114
-      Script: {instanceID: 14428}
+      Script: {instanceID: 14406}
     - Class: 114
-      Script: {instanceID: 14464}
+      Script: {instanceID: 14430}
     - Class: 114
-      Script: {instanceID: 14584}
+      Script: {instanceID: 14448}
     - Class: 114
-      Script: {instanceID: 14628}
+      Script: {instanceID: 14468}
     - Class: 114
-      Script: {instanceID: 14640}
+      Script: {instanceID: 14588}
     - Class: 114
-      Script: {instanceID: 14712}
+      Script: {instanceID: 14632}
     - Class: 114
-      Script: {instanceID: 14832}
+      Script: {instanceID: 14644}
     - Class: 114
-      Script: {instanceID: 14910}
+      Script: {instanceID: 14716}
     - Class: 114
-      Script: {instanceID: 15038}
+      Script: {instanceID: 14836}
     - Class: 114
-      Script: {instanceID: 15126}
+      Script: {instanceID: 14914}
     - Class: 114
-      Script: {instanceID: 15290}
+      Script: {instanceID: 15042}
     - Class: 114
-      Script: {instanceID: 15316}
+      Script: {instanceID: 15130}
     - Class: 114
-      Script: {instanceID: 15348}
+      Script: {instanceID: 15294}
     - Class: 114
-      Script: {instanceID: 15442}
+      Script: {instanceID: 15320}
     - Class: 114
-      Script: {instanceID: 15684}
+      Script: {instanceID: 15352}
     - Class: 114
-      Script: {instanceID: 15738}
+      Script: {instanceID: 15446}
     - Class: 114
-      Script: {instanceID: 15760}
+      Script: {instanceID: 15688}
     - Class: 114
-      Script: {instanceID: 15992}
+      Script: {instanceID: 15742}
+    - Class: 114
+      Script: {instanceID: 15764}
     - Class: 114
       Script: {instanceID: 15996}
     - Class: 114
-      Script: {instanceID: 16040}
+      Script: {instanceID: 16000}
     - Class: 114
-      Script: {instanceID: 16066}
+      Script: {instanceID: 16044}
     - Class: 114
-      Script: {instanceID: 16068}
+      Script: {instanceID: 16070}
     - Class: 114
-      Script: {instanceID: 16212}
+      Script: {instanceID: 16072}
     - Class: 114
-      Script: {instanceID: 16218}
+      Script: {instanceID: 16216}
+    - Class: 114
+      Script: {instanceID: 16222}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -541,7 +555,7 @@ ScriptsOnlyBuild:
     className: DebugUIHandlerVBox
   - hash:
       serializedVersion: 2
-      Hash: e5b8b27d5943cd4a2169601dae5f8638
+      Hash: c957cf7e2d1d15bf85beb938609d8f2e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GroundNum
@@ -679,7 +693,7 @@ ScriptsOnlyBuild:
     className: PhysicsRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 76d484519de0ca23d19853ea351a459c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Record
@@ -757,7 +771,7 @@ ScriptsOnlyBuild:
     className: PixelPerfectCamera
   - hash:
       serializedVersion: 2
-      Hash: 78050d53f1d005282fa525dd4eae8e8b
+      Hash: a9952ced19cd7f87d9265f31a5c2b7ac
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Potion
@@ -997,7 +1011,7 @@ ScriptsOnlyBuild:
     className: Button
   - hash:
       serializedVersion: 2
-      Hash: f4beab00ab6906ec5cbf6548c32c5201
+      Hash: 7ce36d80a9cb975d96dbee08adc3135d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BossAttack
@@ -1043,6 +1057,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.RenderPipelines.Universal.Runtime.dll
     namespaceName: UnityEngine.Rendering.Universal
     className: MotionBlur
+  - hash:
+      serializedVersion: 2
+      Hash: 3170b345fedbd66c7c938bbdfa9fb9e2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: iceballskill
   - hash:
       serializedVersion: 2
       Hash: 71b711096c6c32621c1d4c02310898b7
@@ -1111,6 +1131,12 @@ ScriptsOnlyBuild:
     className: Physics2DRaycaster
   - hash:
       serializedVersion: 2
+      Hash: afc5b93a7b192de2dcb3832fe35a5c7e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: EndGround
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1129,7 +1155,7 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 76d484519de0ca23d19853ea351a459c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -1195,7 +1221,7 @@ ScriptsOnlyBuild:
     className: OpenSkill
   - hash:
       serializedVersion: 2
-      Hash: 67935de1f063bad876b6366f4b16e64a
+      Hash: 5aeaa628155c73606d05b20e75f6f10a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -1493,6 +1519,48 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: ce669872a2be11bc686ea22961d8a3bb
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Joystick
+  - hash:
+      serializedVersion: 2
+      Hash: 9e27f44bbf48228f203a37254d40f8ae
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: JoystickSetterExample
+  - hash:
+      serializedVersion: 2
+      Hash: ce669872a2be11bc686ea22961d8a3bb
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FloatingJoystick
+  - hash:
+      serializedVersion: 2
+      Hash: 824e8d4cb47ffd88ddf959dbd4526585
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DynamicJoystick
+  - hash:
+      serializedVersion: 2
+      Hash: ce669872a2be11bc686ea22961d8a3bb
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FixedJoystick
+  - hash:
+      serializedVersion: 2
+      Hash: 528e9858840cb8370d93939fff6b42d9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: JoystickPlayerExample
+  - hash:
+      serializedVersion: 2
+      Hash: 9dac16f3efc511835ac976dfae55f580
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: VariableJoystick
   platform: 20
   scenePathNames:
   - "Assets/Scenes/\u9078\u55AE.unity"

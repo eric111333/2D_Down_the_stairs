@@ -20,7 +20,8 @@ public class attack : MonoBehaviour
         sprPlayer = GetComponent<SpriteRenderer>();
         aniPlayer = GetComponent<Animator>();
         //attackSpeed = 1;
-        //attackDamage = 10;
+        attackDamage = 10;
+        attackSpeed = 1.5f;
     }
 
     // Update is called once per frame

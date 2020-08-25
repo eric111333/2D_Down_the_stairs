@@ -13,7 +13,8 @@ public class Potion : MonoBehaviour
     public GameObject printitem;
     public Text goldNum;
     public Text goldNum1;
-    public Image fire;
+    private Image fire;
+    private Image fire2;
     private float firetime;
     private float fireCDtime=2;
     Vector3 t0 = new Vector3(0, 0, 0);
@@ -25,6 +26,9 @@ public class Potion : MonoBehaviour
         //potionNum = 3;
         //atkDamageNum = 10;
         //HpPulsNum = 10;
+        fire = GameObject.Find("fire").GetComponent<Image>();
+        //fire2 = GameObject.Find("fire2").GetComponent<Image>();
+        //GameObject.Find("血條").GetComponent<Image>();
 
     }
     public void skill()
@@ -42,7 +46,8 @@ public class Potion : MonoBehaviour
             if(Player.front==false)
         Instantiate(Fireball, pos1, Quaternion.identity);
             fire.fillAmount = 0;
-        Player.mp-=2;
+            //fire2.fillAmount = 0;
+            Player.mp-=2;
         }   
         if(Player.mp<=1)
             {
@@ -110,5 +115,6 @@ public class Potion : MonoBehaviour
         { if (firetime >= fireCDtime) firetime = 0;}
             
         fire.fillAmount = firetime / fireCDtime;
+        //fire2.fillAmount = firetime / fireCDtime;
     }
 }

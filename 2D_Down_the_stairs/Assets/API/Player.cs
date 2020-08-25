@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     //[Header("目前的水平速度")]
     //public float speedX;
     public GameObject hitPrint;
+    public Joystick joy;
 
 
     [Header("水平推力")]
@@ -53,6 +54,8 @@ public class Player : MonoBehaviour
     public AudioClip soundJump;
 
     public static bool front;
+
+
     
 
 
@@ -101,6 +104,7 @@ public class Player : MonoBehaviour
     void Start()
     {
 
+        hpMax = 300;
         playerRigidbody2D = GetComponent<Rigidbody2D>();
         sprPlayer = GetComponent<SpriteRenderer>();
         aniPlayer = GetComponent<Animator>();
@@ -108,6 +112,8 @@ public class Player : MonoBehaviour
         hpBar = GameObject.Find("血條").GetComponent<Image>();
         mpBar = GameObject.Find("魔力條").GetComponent<Image>();
         hp = hpMax;
+        
+        
         //goldNum = 1000;
 
     }
@@ -173,12 +179,16 @@ public class Player : MonoBehaviour
 
     void GroundMove()
     {
-        float horizontalMove = Input.GetAxisRaw("Horizontal");
+        float horizontalMove = joy.Horizontal;//Input.GetAxisRaw("Horizontal");
         playerRigidbody2D.velocity =
            new Vector2(horizontalMove * speed, playerRigidbody2D.velocity.y);
-        if (horizontalMove != 0)
+        if (horizontalMove >= 0.01f)
         {
-            transform.localScale = new Vector3(horizontalMove * 0.12f, 0.12f, 0.12f);
+            transform.localScale = new Vector3(1 * 0.12f, 0.12f, 0.12f);
+        }
+        if (horizontalMove <= -0.01f)
+        {
+            transform.localScale = new Vector3(-1 * 0.12f, 0.12f, 0.12f);
         }
         if (horizontalMove > 0) front = true;
         if (horizontalMove < 0) front = false;
@@ -190,7 +200,7 @@ public class Player : MonoBehaviour
             jumpCount = 2;
             isjump = false;
         }
-        if (jumpPressed && grounded)
+        if (joy.Vertical>0.3f && grounded)
         {
             isjump = true;
             playerRigidbody2D.velocity = new Vector2(playerRigidbody2D.velocity.x, yForce);
@@ -198,7 +208,7 @@ public class Player : MonoBehaviour
             aud.PlayOneShot(soundJump, 05f);
             jumpPressed = false;
         }
-        else if (jumpPressed && jumpCount > 0 && isjump)
+        else if (joy.Vertical > 0.9f && jumpCount > 0 && isjump)
         {
             playerRigidbody2D.velocity = new Vector2(playerRigidbody2D.velocity.x, yForce);
             jumpCount--;
