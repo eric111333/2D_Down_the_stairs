@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy00 : enemy
 {
@@ -8,10 +9,14 @@ public class Enemy00 : enemy
     public static int Hp = 500;
     public static int HpMax = 500;
     private Animator ani;
+    public static int bossDieNum=0;
+    public static bool bossDie;
     void Start()
     {
         ani = GetComponent<Animator>();
         dropRate = Random.Range(0, 100);
+        bossDie = false;
+        Hp = HpMax;
     }
     public override void TakeDamage(int damage)
     {
@@ -61,7 +66,13 @@ public class Enemy00 : enemy
 
     void Die()
     {
+        bossDie = true;
         Destroy(this.gameObject, 0.5f);
+        //HpMax += bossDieNum * 10;
+        Debug.Log("999");
+        //GroundNum.bosskiller += 20 + bossDieNum;
+        //GroundNum.bossNum++;
+        
     }
     void Update()
     {

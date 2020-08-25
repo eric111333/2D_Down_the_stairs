@@ -3,24 +3,28 @@ using UnityEngine.UI;
 
 public class Potion : MonoBehaviour
 {
-    public static int potionNum;
+    public static int potionNum=3;
     public Text potionText;
     public Text atkDamage;
-    public static int atkDamageNum;
+    public Text HpPuls;
+    public static int atkDamageNum=10;
     public GameObject Fireball;
     public GameObject target;
     public GameObject printitem;
     public Text goldNum;
+    public Text goldNum1;
     public Image fire;
     private float firetime;
     private float fireCDtime=2;
     Vector3 t0 = new Vector3(0, 0, 0);
+    public static int HpPulsNum=10;
 
 
     void Start()
     {
-        potionNum = 3;
-        atkDamageNum = 10;
+        //potionNum = 3;
+        //atkDamageNum = 10;
+        //HpPulsNum = 10;
 
     }
     public void skill()
@@ -68,6 +72,26 @@ public class Potion : MonoBehaviour
         }
             
     }
+    public void PulsHp()
+    {
+        if(Player.goldNum >= HpPulsNum * 10)
+        {
+            HpPulsNum++;
+            Player.hpMax += 10;
+            Player.hp += 10;
+            Player.goldNum -= HpPulsNum * 10;
+            goldNum1.text = "" + HpPulsNum * 10;
+            HpPuls.text = "" + HpPulsNum;
+            GameObject points = Instantiate(printitem, t0, Quaternion.identity) as GameObject;
+            points.transform.GetChild(0).GetComponent<TextMesh>().text = "HPMAX+" + 10;
+        }
+        if (Player.goldNum <= HpPulsNum * 10)
+        {
+            GameObject points = Instantiate(printitem, t0, Quaternion.identity) as GameObject;
+            points.transform.GetChild(0).GetComponent<TextMesh>().text = "金錢不足";
+        }
+    }
+
     public void pot()
     {
 

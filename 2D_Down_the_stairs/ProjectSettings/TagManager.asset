@@ -15,6 +15,7 @@ TagManager:
   - potion
   - fireball
   - "\u9B54\u529B\u689D"
+  - iceball
   layers:
   - Default
   - TransparentFX

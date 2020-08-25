@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     private AudioSource aud;
     //[Header("目前的水平速度")]
     //public float speedX;
+    public GameObject hitPrint;
+
 
     [Header("水平推力")]
     [Range(0, 150)]
@@ -31,8 +33,8 @@ public class Player : MonoBehaviour
 
     public bool dead;
     [Header("血量"), Range(0, 10000)]
-    public static float hp = 1200;
-    public static float hpMax = 1200;
+    public static float hp=300;
+    public static float hpMax = 300;
     private Image hpBar;
     [Header("血顯示數字")]
     public Text textHp;
@@ -43,7 +45,7 @@ public class Player : MonoBehaviour
     private float mpTime;
     private float mpCd=5;
 
-    public static int goldNum;
+    public static int goldNum=100;
     public Text goldtext;
     [Header("結束畫面")]
     public GameObject final;
@@ -51,6 +53,7 @@ public class Player : MonoBehaviour
     public AudioClip soundJump;
 
     public static bool front;
+    
 
 
     /*public void ControlSpeed()
@@ -105,7 +108,7 @@ public class Player : MonoBehaviour
         hpBar = GameObject.Find("血條").GetComponent<Image>();
         mpBar = GameObject.Find("魔力條").GetComponent<Image>();
         hp = hpMax;
-        goldNum = 1000;
+        //goldNum = 1000;
 
     }
 
@@ -221,6 +224,12 @@ public class Player : MonoBehaviour
         }
     }
 
+    void DamageText(int ten)
+    {
+        Vector3 pos = new Vector3(transform.position.x + Random.Range(-0.1f, 0.1f), transform.position.y, 0);
+        GameObject points = Instantiate(hitPrint, transform.position, Quaternion.identity) as GameObject;
+        points.transform.GetChild(0).GetComponent<TextMesh>().text = "" + ten;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -232,7 +241,16 @@ public class Player : MonoBehaviour
             aud.PlayOneShot(soundHit);
             hpBar.fillAmount = hp / hpMax;
             aniPlayer.SetTrigger("hurt");
-
+            DamageText(10);
+            if (hp <= 0) Dead();
+        }
+        if (collision.tag == "iceball")
+        {
+            hp -= 30;
+            aud.PlayOneShot(soundHit);
+            hpBar.fillAmount = hp / hpMax;
+            aniPlayer.SetTrigger("hurt");
+            DamageText(30);
             if (hp <= 0) Dead();
         }
         if (collision.tag == "Gold")
@@ -250,7 +268,7 @@ public class Player : MonoBehaviour
             aud.PlayOneShot(soundHit);
             hpBar.fillAmount = hp / hpMax;
             aniPlayer.SetTrigger("hurt");
-
+            DamageText(10);
             if (hp <= 0) Dead();
         }
         if (collision.tag == "洞")
@@ -258,7 +276,7 @@ public class Player : MonoBehaviour
             hp -= 10000;
             hpBar.fillAmount = hp / hpMax;
             aniPlayer.SetTrigger("hurt");
-
+            DamageText(100000);
             if (hp <= 0) Dead();
         }
     }
@@ -281,6 +299,7 @@ public class Player : MonoBehaviour
         final.SetActive(true);
         //gm.GameOver();
         dead = true;
+        
 
     }
 }

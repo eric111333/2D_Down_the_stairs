@@ -8,10 +8,10 @@ public class attack : MonoBehaviour
     public Transform attackpoint;
     private AudioSource aud;
     private float attackTime;
-    public static float attackSpeed;
+    public static float attackSpeed=1.5f;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
-    public static int attackDamage = 10;
+    public static int attackDamage=10;
     public AudioClip soundAttack;
     // Use this for initialization
     void Start()
@@ -19,8 +19,8 @@ public class attack : MonoBehaviour
         aud = GetComponent<AudioSource>();
         sprPlayer = GetComponent<SpriteRenderer>();
         aniPlayer = GetComponent<Animator>();
-        attackSpeed = 1;
-        attackDamage = 10;
+        //attackSpeed = 1;
+        //attackDamage = 10;
     }
 
     // Update is called once per frame

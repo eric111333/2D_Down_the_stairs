@@ -7,9 +7,12 @@ public class BossAttack : MonoBehaviour
     Rigidbody2D rb;
     public Transform player;
     Animator ani;
+    public GameObject iceball;
     public float speed;
     public float moveSpeed;
     public float bossRange;
+    public float bossatttime;
+    public bool front;
 
     void Start()
     {
@@ -19,6 +22,19 @@ public class BossAttack : MonoBehaviour
     }
 
     // Update is called once per frame
+    void BossSkill()
+    {
+        float x = transform.position.x + 1.5f;
+        float x1 = transform.position.x - 1.5f;
+        float y = transform.position.y;
+        Vector3 pos = new Vector3(x, y, 0);
+        Vector3 pos1 = new Vector3(x1, y, 0);
+        if (front==true) Instantiate(iceball, pos, Quaternion.identity);
+        if(front==false) Instantiate(iceball, pos1, Quaternion.identity);
+        
+        bossatttime = 0;
+    }
+
     void Update()
     {
         
@@ -28,12 +44,19 @@ public class BossAttack : MonoBehaviour
         {
             chasePlayer();
         }
-        else
+        if(distToPlayer<2f)
         {
             stopPlayer();
         }
-        if (distToPlayer < 1)
-        ani.SetTrigger("attack");
+        if (distToPlayer < 3f && bossatttime>=2)
+        {
+            ani.SetTrigger("attack");
+            BossSkill();
+        }
+        
+
+
+        bossatttime += Time.deltaTime;
 
     }
     void chasePlayer()
@@ -42,11 +65,13 @@ public class BossAttack : MonoBehaviour
         {
             rb.velocity = new Vector2(moveSpeed, 0);
             transform.localScale = new Vector3(1, 1, 1);
+            front = true;
         }
         else
         {
             rb.velocity = new Vector2(-moveSpeed, 0);
             transform.localScale = new Vector3(-1,1, 1);
+            front = false;
         }
     }
     void stopPlayer()

@@ -175,9 +175,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 8514437157469756467, guid: 8ac764e3717cb454f81458c8c4541be8, type: 3}
+  iceball: {fileID: 3421906289736864248, guid: effad556931b2084989545a9ed66621c, type: 3}
   speed: 5
   moveSpeed: 2
   bossRange: 8
+  bossatttime: 0
+  front: 0
 --- !u!114 &-3494936859794009248
 MonoBehaviour:
   m_ObjectHideFlags: 0
