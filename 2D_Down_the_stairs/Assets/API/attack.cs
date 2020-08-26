@@ -11,7 +11,7 @@ public class attack : MonoBehaviour
     public static float attackSpeed=1.5f;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
-    public static int attackDamage=10;
+    public static int attackDamage;
     public AudioClip soundAttack;
     // Use this for initialization
     void Start()
@@ -20,7 +20,7 @@ public class attack : MonoBehaviour
         sprPlayer = GetComponent<SpriteRenderer>();
         aniPlayer = GetComponent<Animator>();
         //attackSpeed = 1;
-        attackDamage = 10;
+        
         attackSpeed = 1.5f;
     }
 

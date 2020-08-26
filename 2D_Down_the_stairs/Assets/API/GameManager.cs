@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject audios;
+    public GameObject playeraudios;
 
     public void StartGame()
     {
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
         audios.GetComponent<AudioSource>().volume=PlayerPrefs.GetFloat("volume");
         Potion.HpPulsNum=PlayerPrefs.GetInt("HpPulsNum");
         Potion.atkDamageNum=PlayerPrefs.GetInt("atkDamageNum");
+        playeraudios.GetComponent<AudioSource>().volume=PlayerPrefs.GetFloat("volume");
     }
 
     // Update is called once per frame

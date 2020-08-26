@@ -34,8 +34,8 @@ public class Player : MonoBehaviour
 
     public bool dead;
     [Header("血量"), Range(0, 10000)]
-    public static float hp=300;
-    public static float hpMax = 300;
+    public static float hp;
+    public static float hpMax;
     private Image hpBar;
     [Header("血顯示數字")]
     public Text textHp;
@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
     private float mpTime;
     private float mpCd=5;
 
-    public static int goldNum=100;
+    public static int goldNum;
     public Text goldtext;
     [Header("結束畫面")]
     public GameObject final;
@@ -104,7 +104,7 @@ public class Player : MonoBehaviour
     void Start()
     {
 
-        hpMax = 300;
+        
         playerRigidbody2D = GetComponent<Rigidbody2D>();
         sprPlayer = GetComponent<SpriteRenderer>();
         aniPlayer = GetComponent<Animator>();

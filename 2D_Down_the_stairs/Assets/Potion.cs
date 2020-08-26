@@ -3,11 +3,11 @@ using UnityEngine.UI;
 
 public class Potion : MonoBehaviour
 {
-    public static int potionNum=3;
+    public static int potionNum;
     public Text potionText;
     public Text atkDamage;
     public Text HpPuls;
-    public static int atkDamageNum=10;
+    public static int atkDamageNum;
     public GameObject Fireball;
     public GameObject target;
     public GameObject printitem;
@@ -18,7 +18,7 @@ public class Potion : MonoBehaviour
     private float firetime;
     private float fireCDtime=2;
     Vector3 t0 = new Vector3(0, 0, 0);
-    public static int HpPulsNum=10;
+    public static int HpPulsNum;
 
 
     void Start()
