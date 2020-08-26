@@ -33,7 +33,7 @@ public class Record : MonoBehaviour
     
     void Update()
     {
-        PlayerPrefs.SetFloat("volume", playeraudios.GetComponent<AudioSource>().volume);
+        PlayerPrefs.SetFloat("volume2", playeraudios.GetComponent<AudioSource>().volume);
         PlayerPrefs.SetFloat("playerhpMax", Player.hpMax);
         PlayerPrefs.SetInt("goldNum", Player.goldNum);
         PlayerPrefs.SetInt("potionNum", Potion.potionNum);

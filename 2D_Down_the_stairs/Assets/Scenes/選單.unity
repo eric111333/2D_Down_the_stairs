@@ -1086,7 +1086,7 @@ GameObject:
   - component: {fileID: 606643127}
   - component: {fileID: 606643126}
   m_Layer: 5
-  m_Name: Button
+  m_Name: startButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1214,6 +1214,7 @@ GameObject:
   - component: {fileID: 632578277}
   - component: {fileID: 632578276}
   - component: {fileID: 632578275}
+  - component: {fileID: 632578278}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1286,6 +1287,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &632578278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632578274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &637841906
 GameObject:
   m_ObjectHideFlags: 0
@@ -2333,7 +2365,7 @@ GameObject:
   - component: {fileID: 1164816080}
   - component: {fileID: 1164816079}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: backButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2403,7 +2435,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1302778607}
-        m_MethodName: StartGame
+        m_MethodName: BackGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2480,8 +2512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88235a7a4f52b27448c73c999213d652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audios: {fileID: 995317322}
-  playeraudios: {fileID: 0}
+  startbutton: {fileID: 606643124}
+  back: {fileID: 1164816077}
 --- !u!4 &1302778608
 Transform:
   m_ObjectHideFlags: 0

@@ -21,8 +21,10 @@ public class GameManager : MonoBehaviour
         audios.GetComponent<AudioSource>().volume=PlayerPrefs.GetFloat("volume");
         Potion.HpPulsNum=PlayerPrefs.GetInt("HpPulsNum");
         Potion.atkDamageNum=PlayerPrefs.GetInt("atkDamageNum");
-        playeraudios.GetComponent<AudioSource>().volume=PlayerPrefs.GetFloat("volume");
-    }
+        playeraudios.GetComponent<AudioSource>().volume=PlayerPrefs.GetFloat("volume2");
+        MenuManager.backGameNum = PlayerPrefs.GetInt("backgame");
+
+     }
 
     // Update is called once per frame
     void Update()

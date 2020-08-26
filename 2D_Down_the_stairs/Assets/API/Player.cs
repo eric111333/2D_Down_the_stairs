@@ -103,15 +103,15 @@ public class Player : MonoBehaviour
     */
     void Start()
     {
-
-        
+        hpMax = PlayerPrefs.GetFloat("playerhpMax");
+        hp = hpMax;
         playerRigidbody2D = GetComponent<Rigidbody2D>();
         sprPlayer = GetComponent<SpriteRenderer>();
         aniPlayer = GetComponent<Animator>();
         aud = GetComponent<AudioSource>();
         hpBar = GameObject.Find("血條").GetComponent<Image>();
         mpBar = GameObject.Find("魔力條").GetComponent<Image>();
-        hp = hpMax;
+       // hp = hpMax;
         
         
         //goldNum = 1000;
