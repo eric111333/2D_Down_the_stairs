@@ -44,7 +44,7 @@ public class MenuManager : MonoBehaviour
     private void Start()
     {
         Screen.SetResolution(480, 854, false);
-        
+        backGameNum = PlayerPrefs.GetInt("backgame");
     }
     private void Update()
     {

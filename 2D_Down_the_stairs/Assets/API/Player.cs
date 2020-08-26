@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     private Animator aniPlayer;
-    private SpriteRenderer sprPlayer;
+    //private SpriteRenderer sprPlayer;
     Rigidbody2D playerRigidbody2D;
     private AudioSource aud;
     //[Header("目前的水平速度")]
@@ -106,7 +106,7 @@ public class Player : MonoBehaviour
         hpMax = PlayerPrefs.GetFloat("playerhpMax");
         hp = hpMax;
         playerRigidbody2D = GetComponent<Rigidbody2D>();
-        sprPlayer = GetComponent<SpriteRenderer>();
+        //sprPlayer = GetComponent<SpriteRenderer>();
         aniPlayer = GetComponent<Animator>();
         aud = GetComponent<AudioSource>();
         hpBar = GameObject.Find("血條").GetComponent<Image>();

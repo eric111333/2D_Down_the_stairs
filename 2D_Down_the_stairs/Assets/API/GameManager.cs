@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        Player.hpMax=PlayerPrefs.GetFloat("playerhpMax");
+        //Player.hpMax=PlayerPrefs.GetFloat("playerhpMax");
         Player.goldNum=PlayerPrefs.GetInt("goldNum");
         Potion.potionNum=PlayerPrefs.GetInt("potionNum");
         //attack.attackSpeed=PlayerPrefs.GetFloat("attackSpeed");
