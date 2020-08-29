@@ -15,14 +15,12 @@ public class GameManager : MonoBehaviour
     {
         //Player.hpMax=PlayerPrefs.GetFloat("playerhpMax");
         Player.goldNum=PlayerPrefs.GetInt("goldNum");
-        Potion.potionNum=PlayerPrefs.GetInt("potionNum");
         //attack.attackSpeed=PlayerPrefs.GetFloat("attackSpeed");
         attack.attackDamage=PlayerPrefs.GetInt("attackDamage");
         audios.GetComponent<AudioSource>().volume=PlayerPrefs.GetFloat("volume");
-        Potion.HpPulsNum=PlayerPrefs.GetInt("HpPulsNum");
-        Potion.atkDamageNum=PlayerPrefs.GetInt("atkDamageNum");
         playeraudios.GetComponent<AudioSource>().volume=PlayerPrefs.GetFloat("volume2");
         MenuManager.backGameNum = PlayerPrefs.GetInt("backgame");
+        
 
      }
 

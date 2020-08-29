@@ -7,14 +7,17 @@ public class Potion : MonoBehaviour
     public Text potionText;
     public Text atkDamage;
     public Text HpPuls;
+    public Text SkillPulstext;
     public static int atkDamageNum;
+    public static int skillpuls;
     public GameObject Fireball;
     public GameObject target;
     public GameObject printitem;
     public Text goldNum;
     public Text goldNum1;
+    public Text goldskillNum;
     private Image fire;
-    private Image fire2;
+    //private Image fire2;
     private float firetime;
     private float fireCDtime=2;
     Vector3 t0 = new Vector3(0, 0, 0);
@@ -26,29 +29,39 @@ public class Potion : MonoBehaviour
         //potionNum = 3;
         //atkDamageNum = 10;
         //HpPulsNum = 10;
+        //skillpuls = 1;
         fire = GameObject.Find("fire").GetComponent<Image>();
         //fire2 = GameObject.Find("fire2").GetComponent<Image>();
         //GameObject.Find("血條").GetComponent<Image>();
+        skillpuls = PlayerPrefs.GetInt("skillpuls");
+        HpPulsNum = PlayerPrefs.GetInt("HpPulsNum");
+        atkDamageNum = PlayerPrefs.GetInt("atkDamageNum");
+        potionNum = PlayerPrefs.GetInt("potionNum");
 
     }
     public void skill()
     {
-
-        if (fire.fillAmount >= 1&&Player.mp>=2)
-        { 
+        if (fire.fillAmount >= 1 && Player.mp >= 2)
+        {
+            for (int i = 0; i < skillpuls; i++)
+        {
         float x = target.GetComponent<Transform>().position.x+1.5f;
         float x1 = target.GetComponent<Transform>().position.x - 1.5f;
-        float y = target.GetComponent<Transform>().position.y;
+        float y = target.GetComponent<Transform>().position.y + Random.Range(-0.5f, 0.5f);
         Vector3 pos = new Vector3(x, y, 0);
         Vector3 pos1 = new Vector3(x1, y, 0);
             if (Player.front==true)
         Instantiate(Fireball, pos, Quaternion.identity);
             if(Player.front==false)
         Instantiate(Fireball, pos1, Quaternion.identity);
-            fire.fillAmount = 0;
+            
             //fire2.fillAmount = 0;
-            Player.mp-=2;
-        }   
+            
+        }
+            Player.mp -= 2;
+            fire.fillAmount = 0;
+        }
+
         if(Player.mp<=1)
             {
             GameObject points = Instantiate(printitem, t0, Quaternion.identity) as GameObject;
@@ -56,17 +69,32 @@ public class Potion : MonoBehaviour
         }
 
     }
+    public void PulsSkill()
+    {
+        if(Player.goldNum >= skillpuls*1000)
+        {
+            
+            Player.goldNum -= skillpuls * 1000;
+            skillpuls++;
+            GameObject points = Instantiate(printitem, t0, Quaternion.identity) as GameObject;
+            points.transform.GetChild(0).GetComponent<TextMesh>().text = "火球*" + skillpuls;
+        }else
+        if (Player.goldNum < skillpuls * 1000)
+        {
+            GameObject points = Instantiate(printitem, t0, Quaternion.identity) as GameObject;
+            points.transform.GetChild(0).GetComponent<TextMesh>().text = "金錢不足";
+        }
+    }
 
     public void PulsDamage()
     {
         
         if (Player.goldNum >= atkDamageNum * 10)
         {
+            Player.goldNum -= atkDamageNum*10;
             atkDamageNum++;
             attack.attackDamage++;
-            Player.goldNum -= atkDamageNum*10;
-            goldNum.text = "" + atkDamageNum * 10;
-            atkDamage.text = "" + atkDamageNum;
+
             GameObject points = Instantiate(printitem, t0, Quaternion.identity) as GameObject;
             points.transform.GetChild(0).GetComponent<TextMesh>().text = "攻擊力=" + atkDamageNum ;
         }
@@ -81,12 +109,11 @@ public class Potion : MonoBehaviour
     {
         if(Player.goldNum >= HpPulsNum * 10)
         {
+            Player.goldNum -= HpPulsNum * 10;
             HpPulsNum++;
             Player.hpMax += 10;
             Player.hp += 10;
-            Player.goldNum -= HpPulsNum * 10;
-            goldNum1.text = "" + HpPulsNum * 10;
-            HpPuls.text = "" + HpPulsNum;
+
             GameObject points = Instantiate(printitem, t0, Quaternion.identity) as GameObject;
             points.transform.GetChild(0).GetComponent<TextMesh>().text = "HPMAX+" + 10;
         }
@@ -103,7 +130,7 @@ public class Potion : MonoBehaviour
         if (potionNum > 0 && Player.hp <=Player.hpMax-20)
         {
             potionNum--;
-            Player.hp += 20;
+            Player.hp += 50;
         }
     }
 
@@ -116,5 +143,11 @@ public class Potion : MonoBehaviour
             
         fire.fillAmount = firetime / fireCDtime;
         //fire2.fillAmount = firetime / fireCDtime;
+        goldNum.text = "" + atkDamageNum * 10;
+        atkDamage.text = "" + atkDamageNum;
+        goldNum1.text = "" + HpPulsNum * 10;
+        HpPuls.text = "" + HpPulsNum;
+        SkillPulstext.text = "" + skillpuls;
+        goldskillNum.text = "" + skillpuls * 1000;
     }
 }

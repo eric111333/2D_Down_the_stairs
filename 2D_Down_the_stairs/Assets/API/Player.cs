@@ -283,10 +283,11 @@ public class Player : MonoBehaviour
         }
         if (collision.tag == "洞")
         {
-            hp -= 10000;
+            hp -= 100;
             hpBar.fillAmount = hp / hpMax;
             aniPlayer.SetTrigger("hurt");
-            DamageText(100000);
+            DamageText(100);
+            playerRigidbody2D.velocity = new Vector2(playerRigidbody2D.velocity.x,yForce*3);
             if (hp <= 0) Dead();
         }
     }

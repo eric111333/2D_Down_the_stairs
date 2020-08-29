@@ -13,6 +13,8 @@ public class Enemy00 : enemy
     public static bool bossDie;
     void Start()
     {
+        Hp = 500 + 100 * bossDieNum;
+        HpMax = 500+100*bossDieNum;
         ani = GetComponent<Animator>();
         dropRate = Random.Range(0, 100);
         bossDie = false;
@@ -33,7 +35,10 @@ public class Enemy00 : enemy
             }
             GroundNum.bosskiller--;
             ani.SetTrigger("die");
-            Instantiate(gold, pos, Quaternion.identity);
+            for (int i = 0; i < Random.Range(10, 50); i++)
+            {
+                Instantiate(gold, pos, Quaternion.identity);
+            }
             Die();
         }
     }
@@ -54,7 +59,10 @@ public class Enemy00 : enemy
                 }
                 GroundNum.bosskiller--;
                 ani.SetTrigger("die");
-                Instantiate(gold, pos, Quaternion.identity);
+                for (int i = 0; i < Random.Range(10, 50); i++)
+                {
+                    Instantiate(gold, pos, Quaternion.identity);
+                }
                 Die();
                 return;
             }

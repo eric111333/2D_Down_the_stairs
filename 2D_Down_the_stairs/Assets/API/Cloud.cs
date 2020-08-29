@@ -15,7 +15,7 @@ public class Cloud : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player") //如果aaa碰撞事件的物件標籤名稱是test
         {
-            Destroy(gameObject,1); //刪除碰撞到的物件(CubeA)
+            Destroy(gameObject,2.5f); //刪除碰撞到的物件(CubeA)
         }
     }
 }

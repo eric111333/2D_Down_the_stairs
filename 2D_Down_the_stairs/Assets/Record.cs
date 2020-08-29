@@ -42,5 +42,6 @@ public class Record : MonoBehaviour
         PlayerPrefs.SetInt("atkDamageNum", Potion.atkDamageNum);
         PlayerPrefs.SetInt("HpPulsNum", Potion.HpPulsNum);
         PlayerPrefs.SetFloat("volume", audios.GetComponent<AudioSource>().volume);
+        PlayerPrefs.SetInt("skillpuls", Potion.skillpuls);
     }
 }

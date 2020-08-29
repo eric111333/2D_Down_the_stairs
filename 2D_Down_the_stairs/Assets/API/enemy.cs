@@ -36,7 +36,11 @@ public class enemy : MonoBehaviour
             }
             GroundNum.bosskiller--;
             ani.SetTrigger("die");
+            for (int i = 0; i < Random.Range(1,5); i++)
+            {
             Instantiate(gold, pos, Quaternion.identity);
+            }
+            
             Die();
             return;
         }
@@ -61,7 +65,10 @@ public class enemy : MonoBehaviour
                 }
                 GroundNum.bosskiller--;
                 ani.SetTrigger("die");
-                Instantiate(gold, pos, Quaternion.identity);
+                for (int i = 0; i < Random.Range(1, 5); i++)
+                {
+                    Instantiate(gold, pos, Quaternion.identity);
+                }
                 Die();
                 return;
             }

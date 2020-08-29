@@ -38,6 +38,7 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetInt("HpPulsNum", 10);
         PlayerPrefs.SetFloat("volume2", 0.7f);
         PlayerPrefs.SetInt("backgame", 1);
+        PlayerPrefs.SetInt("skillpuls", 1);
         SceneManager.LoadScene("SampleScene");
 
     }

@@ -4,7 +4,7 @@ public class CreateEnemy : MonoBehaviour
 {
     [Header("要生成的敵人")]
     public GameObject enemy01;
-    [Header("生成頻率"), Range(0.1f,3f)]
+    [Header("生成頻率"), Range(0.1f,5f)]
     public float interval = 1;
     [Header("x 軸最小值")]
     public float xMin=-3;

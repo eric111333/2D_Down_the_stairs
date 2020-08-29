@@ -15,7 +15,7 @@ public class createprop : MonoBehaviour
     public float xMin;
     [Header("x 軸最大值")]
     public float xMax;
-    [Header("生成頻率"), Range(0.1f, 3f)]
+    [Header("生成頻率"), Range(0.1f, 5f)]
     public float interval = 1;
     public float timer_f = 0f;
     public int timer_i = 0;

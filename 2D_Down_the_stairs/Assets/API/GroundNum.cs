@@ -31,7 +31,7 @@ public class GroundNum : MonoBehaviour
             Debug.Log("111");
             Enemy00.bossDieNum++;
             Spawner.spawnTime = 1.2f;
-            bosskiller += 20+Enemy00.bossDieNum;
+            bosskiller += 10+Enemy00.bossDieNum;
             bossNum++;
             bossdie.text = "" + Enemy00.bossDieNum;
             //Enemy00.bossDie = false;
@@ -45,7 +45,7 @@ public class GroundNum : MonoBehaviour
     }
     private void Start()
     {
-         bosskiller = 20;
+         bosskiller = 10;
         bossNum = 1;
     }
 
