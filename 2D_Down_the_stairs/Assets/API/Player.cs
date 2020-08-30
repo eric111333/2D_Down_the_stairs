@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     [Header("地面圖層")]
     public LayerMask groundLayer;
     public bool grounded, isjump;
-    bool jumpPressed;
+    //bool jumpPressed;
     int jumpCount;
 
 
@@ -146,10 +146,8 @@ public class Player : MonoBehaviour
     void Update()
     {
         if (dead) return;
-        if (Input.GetButtonDown("Jump") && jumpCount > 0)
-        {
-            jumpPressed = true;
-        }
+        //if (Input.GetButtonDown("Jump") && jumpCount > 0)
+            //jumpPressed = true;
         hpBar.fillAmount = hp / hpMax;
         goldtext.text = "" + goldNum;
         mpBar.fillAmount = mp / mpMax;
@@ -206,14 +204,14 @@ public class Player : MonoBehaviour
             playerRigidbody2D.velocity = new Vector2(playerRigidbody2D.velocity.x, yForce);
             jumpCount--;
             aud.PlayOneShot(soundJump, 05f);
-            jumpPressed = false;
+            //jumpPressed = false;
         }
         else if (joy.Vertical > 0.9f && jumpCount > 0 && isjump)
         {
             playerRigidbody2D.velocity = new Vector2(playerRigidbody2D.velocity.x, yForce);
             jumpCount--;
             aud.PlayOneShot(soundJump, 05f);
-            jumpPressed = false;
+            //jumpPressed = false;
         }
     }
     void SwitchAnim()

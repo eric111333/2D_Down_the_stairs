@@ -3,7 +3,7 @@
 public class FanRun : MonoBehaviour
 {
     Animator animator;
-    public bool fanon;
+    //public bool fanon;
     //public GameObject wind;
 
     void Start()

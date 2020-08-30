@@ -8,7 +8,7 @@ public class attack : MonoBehaviour
     public Transform attackpoint;
     private AudioSource aud;
     private float attackTime;
-    public static float attackSpeed=1.5f;
+    public static float attackSpeed=1f;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
     public static int attackDamage;
@@ -21,7 +21,7 @@ public class attack : MonoBehaviour
         aniPlayer = GetComponent<Animator>();
         //attackSpeed = 1;
         
-        attackSpeed = 1.5f;
+        attackSpeed = 1f;
     }
 
     // Update is called once per frame

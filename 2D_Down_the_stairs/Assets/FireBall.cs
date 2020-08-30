@@ -36,7 +36,7 @@ public class FireBall : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag== "enemy")
+        if(collision.tag== "敵人")
         Destroy(gameObject);
     }
 
